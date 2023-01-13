@@ -8,4 +8,7 @@ public abstract class BaseWebCrawler {
     public BaseWebCrawler(List<String> urls) {
         this.urls = urls;
     }
+    public String getURL(int i) {
+    	return urls.get(i);
+    }
 }
