@@ -8,4 +8,10 @@ public class EventCrawler extends BaseWebCrawler {
     public EventCrawler(List<String> urls) {
         super(urls);
     }
+
+	@Override
+	public boolean connect(String url) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
