@@ -6,10 +6,16 @@ public abstract class History {
     private String description;
 
     public History() {
-
+    	super();
     }
+    public History(String name, String time, String description) {
+		super();
+		this.name = name;
+		this.time = time;
+		this.description = description;
+	}
 
-    public String getName() {
+	public String getName() {
         return name;
     }
 
