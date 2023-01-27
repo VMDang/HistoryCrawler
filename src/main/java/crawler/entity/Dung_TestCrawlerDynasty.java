@@ -25,10 +25,8 @@ public class Dung_TestCrawlerDynasty {
 		File theFile = new File("dynasties_NguoiKeSu.json");
 		File theFile2 = new File("dynasties_Description_NguoiKeSu.json");
 		Document doc = Jsoup.connect("https://nguoikesu.com/dong-lich-su").get();
-		//ArrayList<String> Name = new ArrayList<String>();
 		Elements names = doc.select("h3[class = item-title]	");
 		for (Element name : names) {
-			//Name.add(link.text());
 			Dynasty dk1 = new Dynasty();
 			dk1.setName(name.text());
 			theNameList.add(dk1);
