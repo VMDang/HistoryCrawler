@@ -1,9 +1,10 @@
 package crawler.entity;
 
 import crawler.BaseWebCrawler;
-
+import history.entity.Character;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.io.FileWriter;
 import org.json.simple.JSONObject;
 import org.jsoup.Connection;
@@ -13,6 +14,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.*;
 
@@ -96,9 +98,42 @@ public class CharacterCrawler extends BaseWebCrawler {
 	                     				.connect(url)
 	                     				.userAgent("Jsoup client")
 	                     				.timeout(20000).get();
-				Element divInfobox = characterPage.select("div[class*=infobox]").get(0);
-				if(divInfobox != null) {
-					System.out.println(url);
+				String name = characterPage.select("div.page-header h2").text();
+				Elements infoBoxs = characterPage.select("div[class*=infobox]");
+				if(infoBoxs.size()> 0) {
+					Element infoTable = infoBoxs.get(0).select("table").get(0);
+					Elements rows = infoTable.select("tbody tr");
+					String Sinh = null;
+					String Mat = null;
+					String description = null;
+					for(Element r : rows) {
+						Elements col1 = r.select("th");
+						Elements col2 = r.select("td");
+						if(col1.size() > 0 & col2.size() > 0) {
+							String Key = col1.get(0).text();
+							String Value = col2.get(0).text();
+							if(Key.equals("Sinh")) {
+								Sinh = Value;
+							}else 
+							if(Key.equals("Mất")) {
+									Mat = Value;
+							}else {
+								String KeyValue = Key + " : " + Value +"\n";
+								description += KeyValue;
+							}	
+						}else if(col2.size() == 0) {
+							String Value = r.text();
+							description += Value +"\n";
+						}
+					}
+					try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project\\HistoryCrawler\\", true)) {
+					    Gson gson = new GsonBuilder().create();
+					    gson.toJson(event, writer);
+					    writer.write('\n');
+					}
+					
+				}else {
+					
 				}
 			} catch(IOException e) {
 				e.printStackTrace();
