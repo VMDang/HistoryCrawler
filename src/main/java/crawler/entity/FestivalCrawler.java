@@ -65,9 +65,7 @@ public class FestivalCrawler extends BaseWebCrawler {
 			       writer.write('\n');
 	    	   }
 	    	   System.out.println(listName.size());
-	    	   System.out.println(festival[listName.size()-1].getPlaceFes());
-	    	   
-	    	   
+	    	   System.out.println(festival[listName.size()-1].getPlaceFes());    	   
 	    	   
 	 }
 }
