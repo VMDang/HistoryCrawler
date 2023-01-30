@@ -2,47 +2,60 @@ package history.entity;
 
 import history.History;
 
-public class Festival extends History {
-	private String nameFes;
-	private String timeFes;
-	private String placeFes;
-		
+public class Festival  {
+	private String name;
+	private String time;
+	private String place;
+	private String firstTime;
+	private String character;
+	
 	public Festival() {
-		// TODO Auto-generated constructor stub
+		
 	}
-
-	public Festival(String nameFes, String timeFes, String placeFes) {
+	
+	public Festival(String name, String time, String place, String firstTime, String character) {
 		super();
-		this.nameFes = nameFes;
-		this.timeFes = timeFes;
-		this.placeFes = placeFes;
+		this.name = name;
+		this.time = time;
+		this.place = place;
+		this.firstTime = firstTime;
+		this.character = character;
 	}
-
-	public String getNameFes() {
-		return nameFes;
+	public String getName() {
+		return name;
 	}
-
-	public void setNameFes(String nameFes) {
-		this.nameFes = nameFes;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public String getTimeFes() {
-		return timeFes;
+	public String getTime() {
+		return time;
 	}
-
-	public void setTimeFes(String timeFes) {
-		this.timeFes = timeFes;
+	public void setTime(String time) {
+		this.time = time;
 	}
-
-	public String getPlaceFes() {
-		return placeFes;
+	public String getPlace() {
+		return place;
 	}
-
-	public void setPlaceFes(String placeFes) {
-		this.placeFes = placeFes;
+	public void setPlace(String place) {
+		this.place = place;
+	}
+	public String getFirstTime() {
+		return firstTime;
+	}
+	public void setFirstTime(String firstTime) {
+		this.firstTime = firstTime;
+	}
+	public String getCharacter() {
+		return character;
+	}
+	public void setCharacter(String character) {
+		this.character = character;
 	}
 	
 	
 	
-			
+	
+	
+	
+		
 }

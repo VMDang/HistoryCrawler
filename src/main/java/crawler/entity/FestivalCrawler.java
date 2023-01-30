@@ -29,43 +29,64 @@ public class FestivalCrawler extends BaseWebCrawler {
 		 Festival[] festival = new Festival[300];   
 		 ArrayList<String> listName = new ArrayList<String>();
 		 ArrayList<String> listTime = new ArrayList<String>();
-		 ArrayList<String> listAddress = new ArrayList<String>(); 
+		 ArrayList<String> listFirstHeld = new ArrayList<String>(); 
+		 ArrayList<String> listCharacter = new ArrayList<String>();
+		 ArrayList<String> listPlace = new ArrayList<String>();
 		    
-		     String url = "https://www.couturetravelcompany.com/cac-le-hoi-o-viet-nam/";
-	    	   
+		     String url = "https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam";
 	    	   Document doc = Jsoup.connect(url).get() ;
-	    	   System.out.println(doc);
+	    	   Elements elements = doc.select("table.prettytable > tbody > tr ");
+	    	   for(Element row : elements) {
+	                   String timeFes = row.select("td:nth-of-type(1)").text();
+	                   if(timeFes.length() == 0) {
+	                	   timeFes = null;
+	                   }
+	                   listTime.add(timeFes);
+	  
+	                   String placeFes = row.select("td:nth-of-type(2)").text();
+	                   if(placeFes.length() == 0) {
+	                	   placeFes = null;
+	                   }
+	                   listPlace.add(placeFes);
+	                           
+	                   String nameFes =  row.select("td:nth-of-type(3)").text();
+	                   if(nameFes.length() == 0) {
+	                	   nameFes = null;
+	                   }
+	                   listName.add(nameFes);
+	                           
+	                   String firstHeld = row.select("td:nth-of-type(4)").text();
+	                   if(firstHeld.length() == 0) {
+	                	   firstHeld = null;
+	                   }
+	                   listFirstHeld.add(firstHeld);
+	                   
+	                   String character = row.select("td:nth-of-type(5)").text();
+	                   if(character.length() == 0) {
+	                	   character = null;
+	                   }
+	                   listCharacter.add(character);
+	                   
+	    	   }
 	    	   
-	    	   for(Element row : doc.getElementsByTag("h4")) {
-	    		   listName.add(row.text());
+	    	   for(int i =1 ; i< listTime.size();i++) {
+	    		   festival[i] = new Festival();
+	    		   festival[i].setTime(listTime.get(i));
+	    		   festival[i].setName(listName.get(i));
+	    		   festival[i].setPlace(listPlace.get(i));
+	    		   festival[i].setFirstTime(listFirstHeld.get(i));
+	    		   festival[i].setCharacter(listCharacter.get(i));
 	    		   
 	    	   }
-	    	   listName.remove(listName.size()-1);
 	    	   
-	    	   
-	    	   for(Element row : doc.select("li:matches(Thời gian:)")) {
-	    		   listTime.add(row.text());	    		   
-	    		  
-	    	   }
-	    	   
-	    	   for(Element row : doc.select("li:matches(Địa điểm:)")) {
-	    		   listAddress.add(row.text());
-	   	   
-	    	   }
-	    	   for(int i=0;i<listName.size();i++) {
-	    		   festival[i] = new Festival();
-	    		   festival[i].setNameFes(listName.get(i));
-	    		   festival[i].setTimeFes(listTime.get(i));
-	    		   festival[i].setPlaceFes(listAddress.get(i));
-	    	   }
-	    	   Writer writer = new FileWriter("C:\\Users\\ASUS\\Documents\\ThuongOOP\\HistoryCrawler\\src\\main\\java\\crawler\\json\\festival.json", true);
-	    	   for(int i=0;i<listName.size();i++) {
+	    	   Writer writer = new FileWriter("C:\\Users\\ASUS\\Documents\\ThuongOOP\\HistoryCrawler\\festival.json", true);
+	    	   for(int i=1;i<listTime.size();i++) {
 	    		   Gson gson = new GsonBuilder().create();
 			       gson.toJson(festival[i], writer);
 			       writer.write('\n');
 	    	   }
-	    	   System.out.println(listName.size());
-	    	   System.out.println(festival[listName.size()-1].getPlaceFes());    	   
+	    	   System.out.println("oke");
+	      	   
 	    	   
 	 }
 }
