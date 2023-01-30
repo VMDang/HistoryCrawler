@@ -26,9 +26,9 @@ public class EventCrawler extends BaseWebCrawler {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public static void main(String[] args) throws IOException {
+	public static void crawlerWiki(String url) throws IOException {
 	   	Event event = new Event();
-        Document doc = Jsoup.connect("https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam").get();  
+        Document doc = Jsoup.connect(url).get();
         String title = doc.title();  
         System.out.println("Title : " + title);
         Elements itemsElements = doc.select("div[class=mw-parser-output]");
@@ -64,5 +64,9 @@ public class EventCrawler extends BaseWebCrawler {
 		   }
        }
 	       
+	}
+
+	public static void main(String[] args) throws IOException {
+		EventCrawler.crawlerWiki("https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam");
 	}
 }
