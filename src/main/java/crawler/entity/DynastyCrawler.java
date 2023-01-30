@@ -46,7 +46,7 @@ public class DynastyCrawler extends BaseWebCrawler {
 	}
 	
 	public void getData_NguoiKeSu() {
-		File theFile = new File("Dynasties_NKS.json");
+		File theFile = new File("src\\main\\java\\json\\Dynasties_NKS.json");
 		for (String url : urls) {
 			this.connect(url);
 			Elements names = doc.select("h3[class = item-title]	");

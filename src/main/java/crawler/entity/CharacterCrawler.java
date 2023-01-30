@@ -93,7 +93,7 @@ public class CharacterCrawler extends BaseWebCrawler {
 		return allUrl;
 	}
 	public void getdata_NKS(List<String> allUrl) {
-		try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\character.json", true)) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
 		    writer.write('[');
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -144,7 +144,7 @@ public class CharacterCrawler extends BaseWebCrawler {
 						}
 					}
 					nv.setDescription(description);
-					try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\character.json", true)) {
+					try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
 					    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 					    gson.toJson(nv, writer);
 					    writer.write(",\n");
@@ -182,7 +182,7 @@ public class CharacterCrawler extends BaseWebCrawler {
 					    	  description = "";
 					      }
 					      nv.setDescription(description);
-					      try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\character.json", true)) {
+					      try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
 							    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 							    gson.toJson(nv, writer);
 							    writer.write(",\n");
@@ -201,7 +201,7 @@ public class CharacterCrawler extends BaseWebCrawler {
 						    	  description = "";
 						      }
 						    nv.setDescription(description);
-						    try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\character.json", true)) {
+						    try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
 							    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 							    gson.toJson(nv, writer);
 							    writer.write(",\n");
@@ -215,7 +215,7 @@ public class CharacterCrawler extends BaseWebCrawler {
 				e.printStackTrace();
 			}
 		}
-		try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\character.json", true)) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
 		    writer.write(']');
 		}catch(IOException e) {
 			e.printStackTrace();

@@ -53,10 +53,13 @@ public class EventCrawler extends BaseWebCrawler {
     			        }
     	    		}
     	    	}
-				try (Writer writer = new FileWriter("D:\\HistoryCrawler\\src\\main\\java\\crawler\\json\\event.json", true)) {
-				    Gson gson = new GsonBuilder().create();
+				try (FileWriter writer = new FileWriter("src\\main\\java\\json\\event.json", true)) {
+				    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 				    gson.toJson(event, writer);
-				    writer.write('\n');
+				    writer.write(",\n");
+				}
+				catch(IOException e) {
+					e.printStackTrace();
 				}
 		   }
        }
