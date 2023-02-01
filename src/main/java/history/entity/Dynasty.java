@@ -1,11 +1,14 @@
 package history.entity;
 
+import java.util.ArrayList;
+
 import history.History;
 
 public class Dynasty extends History {
 	
 	private String kingdom;
 	private String capital;
+	private ArrayList<String> king;
 	
 	public String getKingdom() {
 		return kingdom;
@@ -18,6 +21,12 @@ public class Dynasty extends History {
 	}
 	public void setCapital(String capital) {
 		this.capital = capital;
+	}
+	public ArrayList<String> getKing() {
+		return king;
+	}
+	public void setKing(ArrayList<String> king) {
+		this.king = king;
 	}
 	
 	
