@@ -175,7 +175,7 @@ public class CharacterCrawler extends BaseWebCrawler {
 					      nv.setTime(time);
 					      Elements pTags1 = articleBody.select("#toc ~ *");
 					      if(pTags1.size()>0) {
-							for(Element p1 : pTags1) {
+							for(Element p1 : pTags1) {								
 								if(!p1.text().equals("")) description+=p1.text()+"\n";
 							}
 					      }else {
