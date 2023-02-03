@@ -1,5 +1,6 @@
 package history.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import history.History;
@@ -7,7 +8,7 @@ import history.History;
 public class Character extends History {
 	private String aotherName;
 	private String place;
-	private String era;
+	private List<String> era ;
 	public Character() {
 		super();
 		this.aotherName = null;
@@ -20,7 +21,7 @@ public class Character extends History {
 		this.place = null;
 		this.era = null;
 	}
-	public Character (String name, String time, String description,String aotherName,String place,String era) {
+	public Character (String name, String time, String description,String aotherName,String place,List<String> era) {
 		super(name,time,description);
 		this.aotherName = aotherName;
 		this.place = place;
@@ -36,9 +37,8 @@ public class Character extends History {
 		if(place != null) this.place = place;
 		else this.place = "Không rõ";
 	}
-	public void setEra(String era) {
-		if(era != null) this.era = era;
-		else this.era = "Không rõ";
+	public void setEra(List<String> era) {
+		this.era = era;
 	}
 	
 }
