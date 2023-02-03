@@ -51,8 +51,8 @@ public abstract class CharacterCrawler extends BaseWebCrawler {
 	
 	public abstract List<String> getAllUrl(String url);
 	public abstract void getData(List<String> allUrl) ;
-	public abstract void start(String url);
-	
-	
-	
+	public abstract void start();
+
+
+
 }

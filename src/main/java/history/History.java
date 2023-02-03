@@ -1,5 +1,8 @@
 package history;
 
+import java.io.IOException;
+import java.util.List;
+
 public abstract class History {
     private String name ;
     private String time ;
@@ -41,4 +44,6 @@ public abstract class History {
     	if(description!=null) this.description = description;
         else this.description = "";
     }
+
+    public abstract List loadDataJson() throws IOException;
 }

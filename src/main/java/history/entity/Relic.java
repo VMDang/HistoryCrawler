@@ -2,7 +2,9 @@ package history.entity;
 
 import history.History;
 
+import java.io.IOException;
 import java.net.URI;
+import java.util.List;
 
 public class Relic extends History {
     private String place;
@@ -42,5 +44,10 @@ public class Relic extends History {
 
     public void setProvince(String province) {
         this.province = province;
+    }
+
+    @Override
+    public List<Relic> loadDataJson() {
+        return null;
     }
 }

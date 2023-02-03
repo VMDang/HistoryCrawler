@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FestivalCrawler extends BaseWebCrawler {
-	public FestivalCrawler(List<String> urls) {
-		super(urls);
+	public FestivalCrawler(String url) {
+		super(url);
 	}
 
 	@Override
@@ -26,7 +26,15 @@ public class FestivalCrawler extends BaseWebCrawler {
 		return false;
 	}
 
-	public static void crawlerWiki(String url) throws IOException {
+	@Override
+	public void start() throws IOException {
+		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam";
+		FestivalCrawler festivalCrawler = new FestivalCrawler(url);
+		festivalCrawler.connect(url);
+		festivalCrawler.crawlerWiki(url);
+	}
+
+	public void crawlerWiki(String url) throws IOException {
 		Festival[] festival = new Festival[300];
 		ArrayList<String> listName = new ArrayList<String>();
 		ArrayList<String> listTime = new ArrayList<String>();
@@ -91,7 +99,7 @@ public class FestivalCrawler extends BaseWebCrawler {
 		}
 	}
 
-	public static void crawlerBlog(String url) throws IOException {
+	public void crawlerBlog(String url) throws IOException {
 		Festival[] festival = new Festival[300];
 		ArrayList<String> listName = new ArrayList<String>();
 		ArrayList<String> listTime = new ArrayList<String>();
@@ -139,8 +147,12 @@ public class FestivalCrawler extends BaseWebCrawler {
 
 	}
 
-//	public static void main(String[] args) throws IOException {
-//		FestivalCrawler.crawlerWiki("https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam");
+	public static void main(String[] args) throws IOException {
 //		FestivalCrawler.crawlerBlog("https://www.couturetravelcompany.com/cac-le-hoi-o-viet-nam/");
-//	}
+
+		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam";
+		FestivalCrawler festivalCrawler = new FestivalCrawler(url);
+		festivalCrawler.connect(url);
+		festivalCrawler.crawlerWiki(url);
+	}
 }

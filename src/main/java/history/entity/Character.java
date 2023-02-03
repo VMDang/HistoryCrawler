@@ -1,6 +1,5 @@
 package history.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import history.History;
@@ -21,6 +20,12 @@ public class Character extends History {
 		this.place = null;
 		this.era = null;
 	}
+
+	@Override
+	public List<Character> loadDataJson() {
+		return null;
+	}
+
 	public Character (String name, String time, String description,String aotherName,String place,List<String> era) {
 		super(name,time,description);
 		this.aotherName = aotherName;

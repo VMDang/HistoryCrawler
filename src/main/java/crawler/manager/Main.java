@@ -1,12 +1,21 @@
 package crawler.manager;
 
-import crawler.entity.FestivalCrawler;
+import history.entity.Festival;
 
 import java.io.IOException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        FestivalCrawler.crawlerWiki("https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam");
-        FestivalCrawler.crawlerBlog("https://www.couturetravelcompany.com/cac-le-hoi-o-viet-nam/");
+//        RelicCrawler relicCrawler = new RelicCrawler("http://dsvh.gov.vn/danh-muc-di-tich-quoc-gia-dac-biet-1752");
+//        relicCrawler.start();
+
+        Festival festival = new Festival();
+        List<Festival> festivals = festival.loadDataJson();
+
+        for (Festival fes:
+             festivals) {
+            System.out.println(fes.getName() + " - " + fes.getTime());
+        }
     }
 }
