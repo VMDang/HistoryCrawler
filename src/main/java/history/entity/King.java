@@ -2,6 +2,9 @@ package history.entity;
 
 import history.History;
 
+import java.io.IOException;
+import java.util.List;
+
 public class King extends History{
 	protected String mienHieu;
 	protected String thuyHieu;
@@ -24,6 +27,12 @@ public class King extends History{
 		super(name, time, description);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public List<King> loadDataJson() throws IOException {
+		return null;
+	}
+
 	public String getMienHieu() {
 		return mienHieu;
 	}

@@ -204,8 +204,9 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 		test.getData(allUrl);
 	}
 	@Override
-	public void start(String url) {
+	public void start() {
 		// TODO Auto-generated method stub
+		String url = "https://nguoikesu.com/nhan-vat";
 		NguoiKeSuCrawler test = new NguoiKeSuCrawler(url);		
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);

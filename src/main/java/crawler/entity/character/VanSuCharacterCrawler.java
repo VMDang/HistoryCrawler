@@ -70,7 +70,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		return allUrl;
 	}
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\characterVanSu.json")) {
+		try (Writer writer = new FileWriter("src\\main\\java\\characterVanSu.json")) {
 		    writer.write('[');
 		
 		for(String url : allUrl) {
@@ -143,8 +143,10 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 	}
 
 	@Override
-	public void start(String url) {
-		// TODO Auto-generated method stub	
+	public void start() {
+		// TODO Auto-generated method stub
+		String url = "https://vansu.vn/viet-nam/viet-nam-nhan-vat?page=0";
+
 		VanSuCharacterCrawler test = new VanSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);

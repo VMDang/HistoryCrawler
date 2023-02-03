@@ -17,8 +17,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class EventCrawler extends BaseWebCrawler { 
-    public EventCrawler(List<String> urls) {
-        super(urls);
+    public EventCrawler(String url) {
+        super(url);
     }
 
 	@Override
@@ -26,7 +26,16 @@ public class EventCrawler extends BaseWebCrawler {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	public static void crawlerWiki(String url) throws IOException {
+
+	@Override
+	public void start() throws IOException {
+		String url = "https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
+		EventCrawler eventCrawler = new EventCrawler(url);
+		eventCrawler.connect(url);
+		eventCrawler.crawlerWiki(url);
+	}
+
+	public void crawlerWiki(String url) throws IOException {
 	   	Event event = new Event();
         Document doc = Jsoup.connect(url).get();
         String title = doc.title();  
@@ -67,6 +76,10 @@ public class EventCrawler extends BaseWebCrawler {
 	}
 
 	public static void main(String[] args) throws IOException {
-		EventCrawler.crawlerWiki("https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam");
+		String url = "https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
+		EventCrawler eventCrawler = new EventCrawler(url);
+		eventCrawler.connect(url);
+		eventCrawler.crawlerWiki(url);
 	}
+
 }

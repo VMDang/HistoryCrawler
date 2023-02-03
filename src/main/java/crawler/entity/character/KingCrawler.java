@@ -64,7 +64,7 @@ public class KingCrawler extends CharacterCrawler{
 		//get all urls
   		Document doc = getDoc();			
 	   Elements table = doc.select("table[cellpadding = 0] tbody");
-	   try (Writer file = new FileWriter("vua.json")){ 
+	   try (Writer file = new FileWriter("src\\main\\java\\vua.json")){
 			  file.write("[\n");
 	  
 	   for(int k = 0 ; k < allUrl.size() ; k++ ) {
@@ -201,8 +201,9 @@ public class KingCrawler extends CharacterCrawler{
 	   }
 	}
 	@Override
-	public void start(String url) {
+	public void start() {
 		// TODO Auto-generated method stub
+		String url = "https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam";
 		KingCrawler kingCrawler = new KingCrawler(url);
 		kingCrawler.connect(url);
 		List<String> allUrls = kingCrawler.getAllUrl(url);

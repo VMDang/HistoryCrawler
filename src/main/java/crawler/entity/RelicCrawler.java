@@ -22,8 +22,9 @@ import history.entity.*;
 public class RelicCrawler extends BaseWebCrawler {
 	private static List<Relic> relicList = new ArrayList<Relic>();
 	private static Document doc;
-	public RelicCrawler(List<String> urls) {
-		super(urls);
+
+	public RelicCrawler(String url) {
+		super(url);
 		RelicCrawler.doc = null;
 	}
 
@@ -34,9 +35,7 @@ public class RelicCrawler extends BaseWebCrawler {
 	public void setDoc(Document doc) {
 		RelicCrawler.doc = doc;
 	}
-	public String getUrlIndex(int i) {
-		return this.urls.get(i);
-	}
+
 	@Override
 	public boolean connect(String url) {
 		Document document = null;
@@ -52,6 +51,16 @@ public class RelicCrawler extends BaseWebCrawler {
 		}
 		return false;
 	}
+
+	@Override
+	public void start() throws IOException {
+		String url = "http://dsvh.gov.vn/danh-muc-di-tich-quoc-gia-dac-biet-1752";
+		RelicCrawler relicCrawler = new RelicCrawler(url);
+		relicCrawler.connect(url);
+		relicCrawler.getDataNoSubUrl(url);
+		relicCrawler.getDataHaveSubUrl(url);
+	}
+
 	public List<String> getAllUrl(String url ){
 		List<String> allUrl = new ArrayList<String>();
 		this.connect(url);
@@ -139,11 +148,11 @@ public class RelicCrawler extends BaseWebCrawler {
 		}
 	}
 	public static void main(String[] args) {
-		List<String> urls = new ArrayList<String>();
-		urls.add("http://dsvh.gov.vn/danh-muc-di-tich-quoc-gia-dac-biet-1752");
-		RelicCrawler test = new RelicCrawler(urls);
-		String url = test.getUrlIndex(0);
-		test.getDataNoSubUrl(url);
-		test.getDataHaveSubUrl(url);
+		String url = "http://dsvh.gov.vn/danh-muc-di-tich-quoc-gia-dac-biet-1752";
+		RelicCrawler relicCrawler = new RelicCrawler(url);
+		relicCrawler.connect(url);
+		relicCrawler.getDataNoSubUrl(url);
+		relicCrawler.getDataHaveSubUrl(url);
+
 	}
 }
