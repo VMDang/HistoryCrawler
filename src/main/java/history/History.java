@@ -20,7 +20,8 @@ public abstract class History {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if(name!=null) this.name = name;
+        else this.name = "Không rõ";
     }
 
     public String getTime() {
@@ -28,7 +29,8 @@ public abstract class History {
     }
 
     public void setTime(String time) {
-        this.time = time;
+    	if(time!=null) this.time = time;
+        else this.time = "Không rõ";
     }
 
     public String getDescription() {
@@ -36,6 +38,7 @@ public abstract class History {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+    	if(description!=null) this.description = description;
+        else this.description = "";
     }
 }

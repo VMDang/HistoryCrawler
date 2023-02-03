@@ -14,5 +14,5 @@ public abstract class BaseWebCrawler {
 	}
 
 	public abstract boolean connect(String url);
-	
+	public abstract void start();
 }
