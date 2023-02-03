@@ -24,20 +24,17 @@ import history.entity.King;
 
 
 public class KingCrawler extends CharacterCrawler{
-	public KingCrawler(List<String> urls) {
+	public KingCrawler(String urls) {
 		super(urls);
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static void main(String[] args) {
-		
-		List<String> urls = new ArrayList<String>();
-		urls.add("https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam");
-		
-		KingCrawler kingCrawler = new KingCrawler(urls);
-		String url = kingCrawler.getUrlIndex(0);
+	public static void main(String[] args) {	
+		String url = "https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam";	
+		KingCrawler kingCrawler = new KingCrawler(url);
 		kingCrawler.connect(url);
-		kingCrawler.getData(url);
+		List<String> allUrls = kingCrawler.getAllUrl(url);
+		kingCrawler.getData(allUrls);
 		
 		
 	}
@@ -59,6 +56,7 @@ public class KingCrawler extends CharacterCrawler{
 			 
 			  }
 		   }
+		   return links;
 	}
 	@Override
 	public void getData(List<String> allUrl) {
@@ -66,23 +64,10 @@ public class KingCrawler extends CharacterCrawler{
 		//get all urls
   		Document doc = getDoc();			
 	   Elements table = doc.select("table[cellpadding = 0] tbody");
-	   List<String> links = new ArrayList<>();
-	  
-	   //Vua
-	   
-	   for(Element i : table) {
-		  Elements hang = i.select("tr[style *= height:50px;]");
-		  for(Element i1 : hang) {
-			  Element x = i1.select("td").get(1);
-			  Element y = x.getElementsByTag("a").get(0);
-			  links.add(y.attr("href"));
-		 
-		  }
-	   }
 	   try (Writer file = new FileWriter("vua.json")){ 
 			  file.write("[\n");
 	  
-	   for(int k = 0 ; k < links.size() ; k++ ) {
+	   for(int k = 0 ; k < allUrl.size() ; k++ ) {
 		   		String name = null;
 		   		String time = null;
 		   		String depcription = "";
@@ -99,8 +84,8 @@ public class KingCrawler extends CharacterCrawler{
 				String anTang = null;
 				String thanPhu = null;
 				String thanMau = null;
-			  String href = links.get(k);
-		      String link = ("https://vi.wikipedia.org" + links.get(k));
+			  String href = allUrl.get(k);
+		      String link = ("https://vi.wikipedia.org" + allUrl.get(k));
 		      // connect to page a king
 			  Connection webConnection = Jsoup.connect(link);  
 			  Document data = webConnection.get();
@@ -197,6 +182,7 @@ public class KingCrawler extends CharacterCrawler{
 				  kingDetail.setMienHieu(mienHieu);
 				  kingDetail.setNienHieu(nienHieu);
 				  kingDetail.setTenHuy(tenHuy);
+				  kingDetail.setThanPhu(thanPhu);
 				  kingDetail.setThanMau(thanMau);
 				  kingDetail.setThuyHieu(thuyHieu);
 				  kingDetail.setTienNhiem(tienNhiem);
@@ -215,8 +201,11 @@ public class KingCrawler extends CharacterCrawler{
 	   }
 	}
 	@Override
-	public void start() {
+	public void start(String url) {
 		// TODO Auto-generated method stub
-		
+		KingCrawler kingCrawler = new KingCrawler(url);
+		kingCrawler.connect(url);
+		List<String> allUrls = kingCrawler.getAllUrl(url);
+		kingCrawler.getData(allUrls);
 	}
 }

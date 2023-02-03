@@ -21,8 +21,8 @@ import java.util.*;
 
 public abstract class CharacterCrawler extends BaseWebCrawler {
 	private static Document doc;
-    public CharacterCrawler(List<String> urls) {
-        super(urls);
+    public CharacterCrawler(String url) {
+        super(url);
         CharacterCrawler.doc = null;
     }
     
@@ -32,9 +32,6 @@ public abstract class CharacterCrawler extends BaseWebCrawler {
 
 	public void setDoc(Document doc) {
 		CharacterCrawler.doc = doc;
-	}
-	public String getUrlIndex(int i) {
-		return this.urls.get(i);
 	}
 	@Override
 	public boolean connect(String url) {
@@ -54,6 +51,7 @@ public abstract class CharacterCrawler extends BaseWebCrawler {
 	
 	public abstract List<String> getAllUrl(String url);
 	public abstract void getData(List<String> allUrl) ;
+	public abstract void start(String url);
 	
 	
 	
