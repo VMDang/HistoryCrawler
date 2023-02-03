@@ -41,9 +41,9 @@ public class ReadDynastyJsonFile {
 		Gson gson = new Gson();
 		Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasties_NKS.json"));
 		List<Dynasty> dks = Arrays.asList(gson.fromJson(reader, Dynasty[].class));
-		for (Dynasty dk : dks) {
+		/*for (Dynasty dk : dks) {
 			System.out.println("Name: " + dk.getKing());
-		}
+		}*/
 		reader.close();
 
 	}
