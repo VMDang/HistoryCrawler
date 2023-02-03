@@ -3,14 +3,14 @@ package crawler;
 import java.util.List;
 
 public abstract class BaseWebCrawler {
-    protected List<String> urls;
+    protected String url;
     
-    public BaseWebCrawler(List<String> urls) {
-        this.urls = urls;
+    public BaseWebCrawler(String url) {
+        this.url = url;
     }
 
-	public void setUrls(List<String> urls) {
-		this.urls = urls;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public abstract boolean connect(String url);

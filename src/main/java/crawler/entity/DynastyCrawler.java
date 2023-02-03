@@ -21,16 +21,12 @@ public class DynastyCrawler extends BaseWebCrawler {
 	private static Document doc = null;
 	private static List<Dynasty> dynastyList = new ArrayList<>();
 	
-    public DynastyCrawler(List<String> urls) {
-        super(urls);
+    public DynastyCrawler(String url) {
+        super(url);
     }
 
     public static Document getDoc() {
     	return doc;
-    }
-    
-    public String getUrlByIndex(int i) {
-    	return urls.get(i);
     }
     
 	@Override
@@ -46,8 +42,7 @@ public class DynastyCrawler extends BaseWebCrawler {
 	}
 	
 	public void getData_NguoiKeSu() {
-		File theFile = new File("src\\main\\java\\json\\Dynasties_NKS.json");
-		for (String url : urls) {
+		File theFile = new File("src\\main\\java\\json\\Dynasties_NKS_ChangeBaseWeb.json");
 			this.connect(url);
 			Elements names = doc.select("h3[class = item-title]	");
 			Elements descriptions = doc.select("ul[class = issues] li div[class = inner] div");
@@ -57,7 +52,6 @@ public class DynastyCrawler extends BaseWebCrawler {
 				dk.setDescription(descriptions.get(i).text());
 				dynastyList.add(dk);
 			}
-		}
 		
 		try {
 			FileWriter fileWriter = new FileWriter(theFile);
@@ -69,13 +63,5 @@ public class DynastyCrawler extends BaseWebCrawler {
 			System.err.println("Error in writing a file.");
 		}
 	}
-	
-	public static void main(String[] args) {
-		List<String> urls = new ArrayList<String>();
-		urls.add("https://nguoikesu.com/dong-lich-su");
-		DynastyCrawler dynastyCrawler = new DynastyCrawler(urls);
-		dynastyCrawler.getData_NguoiKeSu();
-		
-	}
-	
+
 }
