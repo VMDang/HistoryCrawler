@@ -11,8 +11,12 @@ import org.jsoup.select.Elements;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
 import java.io.Writer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class FestivalCrawler extends BaseWebCrawler {
@@ -138,8 +142,15 @@ public class FestivalCrawler extends BaseWebCrawler {
 		}
 
 	}
+	
 	public static void main(String[] args) throws IOException {
+		
 		FestivalCrawler.crawlerWiki("https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam");
 		FestivalCrawler.crawlerBlog("https://www.couturetravelcompany.com/cac-le-hoi-o-viet-nam/");
+		
+		Gson gson = new Gson();
+		Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/festival_Wiki.json"));
+		List<Festival> dks = Arrays.asList(gson.fromJson(reader, Festival[].class)); //dks is arraylist of festival
+		reader.close();
 	}
 }
