@@ -20,8 +20,8 @@ import history.entity.Character;
 
 public class VanSuCharacterCrawler extends CharacterCrawler{
 
-	public VanSuCharacterCrawler(List<String> urls) {
-		super(urls);
+	public VanSuCharacterCrawler(String url) {
+		super(url);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -70,7 +70,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		return allUrl;
 	}
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\characterVanSu.json", true)) {
+		try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\characterVanSu.json")) {
 		    writer.write('[');
 		
 		for(String url : allUrl) {
@@ -94,7 +94,6 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 					if(cols.size() == 2) {
 						String key = cols.get(0).text();
 						String value = cols.get(1).text();
-						String value1 = cols.get(1).html();
 						if(key.equals("Tên khác")) {
 							 anotherName = value;
 						}
@@ -134,11 +133,9 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		}
 	}
 	public static void main(String[] args) {
-		List<String> urls = new ArrayList<String>();
-		urls.add("https://vansu.vn/viet-nam/viet-nam-nhan-vat?page=0");
 		
-		VanSuCharacterCrawler test = new VanSuCharacterCrawler(urls);
-		String url = test.getUrlIndex(0);
+		String url = "https://vansu.vn/viet-nam/viet-nam-nhan-vat?page=0";
+		VanSuCharacterCrawler test = new VanSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
 		System.out.println(allUrl.size());
@@ -146,8 +143,13 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 	}
 
 	@Override
-	public void start() {
-		// TODO Auto-generated method stub
-		
+	public void start(String url) {
+		// TODO Auto-generated method stub	
+		VanSuCharacterCrawler test = new VanSuCharacterCrawler(url);
+		test.connect(url);
+		List<String> allUrl = test.getAllUrl(url);
+		System.out.println(allUrl.size());
+		test.getData(allUrl);
 	}
+
 }

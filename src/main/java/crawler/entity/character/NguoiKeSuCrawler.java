@@ -20,10 +20,11 @@ import history.entity.Character;
 
 public class NguoiKeSuCrawler extends CharacterCrawler{
 
-	public NguoiKeSuCrawler(List<String> urls) {
-		super(urls);
+	public NguoiKeSuCrawler(String url) {
+		super(url);
 		// TODO Auto-generated constructor stub
 	}
+	@Override
 	public List<String> getAllUrl(String url) {
 		List<String> allUrl = new ArrayList<String>();
 		
@@ -64,8 +65,9 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 		}
 		return allUrl;
 	}
+	@Override
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json")) {
 		    writer.write('[');
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -193,21 +195,21 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {
-		List<String> urls = new ArrayList<String>();
-		urls.add("https://nguoikesu.com/nhan-vat");
-		
-		NguoiKeSuCrawler test = new NguoiKeSuCrawler(urls);
-		String url = test.getUrlIndex(0);
+	public static void main(String[] args) {	
+		String url = "https://nguoikesu.com/nhan-vat";
+		NguoiKeSuCrawler test = new NguoiKeSuCrawler(url);		
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
 		System.out.println(allUrl.size());
-		
 		test.getData(allUrl);
 	}
 	@Override
-	public void start() {
+	public void start(String url) {
 		// TODO Auto-generated method stub
-		
+		NguoiKeSuCrawler test = new NguoiKeSuCrawler(url);		
+		test.connect(url);
+		List<String> allUrl = test.getAllUrl(url);
+		System.out.println(allUrl.size());
+		test.getData(allUrl);
 	}
 }
