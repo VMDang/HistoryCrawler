@@ -97,8 +97,9 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 	
 	@Override
 	public void start() {
-		String url = 
-		getData();
+		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
+		WikiDynastyCrawler wikidc = new WikiDynastyCrawler(url);
+		wikidc.getData();
 	}
 	
 	
