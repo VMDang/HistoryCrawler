@@ -142,6 +142,9 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		test.getData(allUrl);
 	}
 
+	public VanSuCharacterCrawler() {
+	}
+
 	@Override
 	public void start() {
 		// TODO Auto-generated method stub

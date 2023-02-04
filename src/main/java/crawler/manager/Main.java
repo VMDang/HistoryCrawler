@@ -1,21 +1,40 @@
 package crawler.manager;
 
-import history.entity.Festival;
+import crawler.entity.character.KingCharacterCrawler;
+import crawler.entity.character.NguoiKeSuCharacterCrawler;
+import crawler.entity.character.VanSuCharacterCrawler;
+import crawler.entity.dynasty.NguoiKeSuDynastyCrawler;
+import crawler.entity.event.WikiEventCrawler;
+import crawler.entity.festival.CoutureTravelFestivalCrawler;
+import crawler.entity.festival.WikiFestivalCrawler;
+import crawler.entity.relic.DsvhRelicCrawler;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        RelicCrawler relicCrawler = new RelicCrawler("http://dsvh.gov.vn/danh-muc-di-tich-quoc-gia-dac-biet-1752");
-//        relicCrawler.start();
+        KingCharacterCrawler kingCrawler = new KingCharacterCrawler();
+        kingCrawler.start();
 
-        Festival festival = new Festival();
-        List<Festival> festivals = festival.loadDataJson();
+        NguoiKeSuCharacterCrawler nguoiKeSuCharacterCrawler = new NguoiKeSuCharacterCrawler();
+        nguoiKeSuCharacterCrawler.start();
 
-        for (Festival fes:
-             festivals) {
-            System.out.println(fes.getName() + " - " + fes.getTime());
-        }
+        VanSuCharacterCrawler vanSuCharacterCrawler = new VanSuCharacterCrawler();
+        vanSuCharacterCrawler.start();
+
+        NguoiKeSuDynastyCrawler nguoiKeSuDynastyCrawler = new NguoiKeSuDynastyCrawler();
+        nguoiKeSuDynastyCrawler.start();
+
+        WikiEventCrawler wikiEventCrawler = new WikiEventCrawler();
+        wikiEventCrawler.start();
+
+        CoutureTravelFestivalCrawler coutureTravelFestivalCrawler = new CoutureTravelFestivalCrawler();
+        coutureTravelFestivalCrawler.start();
+
+        WikiFestivalCrawler wikiFestivalCrawler = new WikiFestivalCrawler();
+        wikiFestivalCrawler.start();
+
+        DsvhRelicCrawler dsvhRelicCrawler = new DsvhRelicCrawler();
+        dsvhRelicCrawler.start();
     }
 }

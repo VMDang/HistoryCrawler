@@ -6,10 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.List;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -23,15 +20,15 @@ import history.entity.King;
 
 
 
-public class KingCrawler extends CharacterCrawler{
-	public KingCrawler(String urls) {
+public class KingCharacterCrawler extends CharacterCrawler{
+	public KingCharacterCrawler(String urls) {
 		super(urls);
 		// TODO Auto-generated constructor stub
 	}
 	
 	public static void main(String[] args) {	
 		String url = "https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam";	
-		KingCrawler kingCrawler = new KingCrawler(url);
+		KingCharacterCrawler kingCrawler = new KingCharacterCrawler(url);
 		kingCrawler.connect(url);
 		List<String> allUrls = kingCrawler.getAllUrl(url);
 		kingCrawler.getData(allUrls);
@@ -58,6 +55,10 @@ public class KingCrawler extends CharacterCrawler{
 		   }
 		   return links;
 	}
+
+	public KingCharacterCrawler() {
+	}
+
 	@Override
 	public void getData(List<String> allUrl) {
 		// TODO Auto-generated method stub
@@ -204,7 +205,7 @@ public class KingCrawler extends CharacterCrawler{
 	public void start() {
 		// TODO Auto-generated method stub
 		String url = "https://vi.wikipedia.org/wiki/Vua_Vi%E1%BB%87t_Nam";
-		KingCrawler kingCrawler = new KingCrawler(url);
+		KingCharacterCrawler kingCrawler = new KingCharacterCrawler(url);
 		kingCrawler.connect(url);
 		List<String> allUrls = kingCrawler.getAllUrl(url);
 		kingCrawler.getData(allUrls);
