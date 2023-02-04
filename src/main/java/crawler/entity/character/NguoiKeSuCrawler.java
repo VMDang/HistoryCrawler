@@ -69,9 +69,7 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 	public void getData(List<String> allUrl) {
 		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json")) {
 		    writer.write('[');
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
+		
 		for(String url : allUrl) {
 			Character nv = new Character();
 			try {
@@ -118,13 +116,11 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 						}
 					}
 					nv.setDescription(description);
-					try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
-					    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-					    gson.toJson(nv, writer);
-					    writer.write(",\n");
-					}catch(IOException e) {
-						e.printStackTrace();
-					}
+					
+				    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				    gson.toJson(nv, writer);
+				    writer.write(",\n");
+					
 					
 				}else {
 					Elements pTags = articleBody.select("p");
@@ -156,13 +152,11 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 					    	  description = "";
 					      }
 					      nv.setDescription(description);
-					      try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
+					      
 							    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 							    gson.toJson(nv, writer);
 							    writer.write(",\n");
-					      }catch(IOException e) {
-							e.printStackTrace();
-					      }
+					      
 					    }else {
 					    	nv.setName(name);
 					    	nv.setTime("Không rõ");
@@ -175,13 +169,9 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 						    	  description = "";
 						      }
 						    nv.setDescription(description);
-						    try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
-							    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-							    gson.toJson(nv, writer);
-							    writer.write(",\n");
-							}catch(IOException e) {
-								e.printStackTrace();
-							}
+						    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+						    gson.toJson(nv, writer);
+						    writer.write(",\n");							
 					    }
 					}
 				}
@@ -189,7 +179,7 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 				e.printStackTrace();
 			}
 		}
-		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
+		
 		    writer.write(']');
 		}catch(IOException e) {
 			e.printStackTrace();

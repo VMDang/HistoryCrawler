@@ -64,7 +64,7 @@ public class KingCrawler extends CharacterCrawler{
 		//get all urls
   		Document doc = getDoc();			
 	   Elements table = doc.select("table[cellpadding = 0] tbody");
-	   try (Writer file = new FileWriter("vua.json")){ 
+	   try (Writer file = new FileWriter("src\\main\\java\\json\\vua.json")){ 
 			  file.write("[\n");
 	  
 	   for(int k = 0 ; k < allUrl.size() ; k++ ) {

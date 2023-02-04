@@ -70,7 +70,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		return allUrl;
 	}
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("C:\\Users\\Acer\\Documents\\workspace\\JaVa\\History_Project2\\HistoryCrawler\\characterVanSu.json")) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterVanSu.json")) {
 		    writer.write('[');
 		
 		for(String url : allUrl) {
