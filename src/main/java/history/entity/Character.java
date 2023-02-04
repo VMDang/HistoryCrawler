@@ -1,6 +1,13 @@
 package history.entity;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
+
+import com.google.gson.Gson;
 
 import history.History;
 
@@ -14,6 +21,15 @@ public class Character extends History {
 		this.place = null;
 		this.era = null;
 	}
+	public String getAotherName() {
+		return aotherName;
+	}
+	public String getPlace() {
+		return place;
+	}
+	public List<String> getEra() {
+		return era;
+	}
 	public Character (String name, String time, String description) {
 		super(name,time,description);
 		this.aotherName = null;
@@ -22,8 +38,13 @@ public class Character extends History {
 	}
 
 	@Override
-	public List<Character> loadDataJson() {
-		return null;
+	public List<Character> loadDataJson() throws IOException {
+		 	Gson gson = new Gson();
+	        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/character.json"));
+	        List<Character> dks = Arrays.asList(gson.fromJson(reader, Character[].class)); 
+	        reader.close();
+
+	        return dks;
 	}
 
 	public Character (String name, String time, String description,String aotherName,String place,List<String> era) {

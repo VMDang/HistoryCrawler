@@ -5,9 +5,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -24,7 +21,9 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		super(url);
 		// TODO Auto-generated constructor stub
 	}
-	
+	public VanSuCharacterCrawler() {
+		
+	}
 	public List<String> getAllUrl(String url){
 		List<String> allUrl = new ArrayList<String>();
 		
@@ -34,7 +33,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
         for(Element r : rows) {
         	Element a = r.selectFirst("td > a");
         	String charaterUrl = "https://vansu.vn"+ a.attr("href");
-        	System.out.println(charaterUrl);
+//        	System.out.println(charaterUrl);
         	allUrl.add(charaterUrl);
         }
         
@@ -43,7 +42,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		
 		do {
 			String hrefNext = nextPageButton.attr("href");
-			System.out.println(hrefNext + "\n\n");
+//			System.out.println(hrefNext + "\n\n");
 			
 			Document page = null;
 	        try{
@@ -56,7 +55,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 	            for(Element r : rows1) {
 	            	Element a = r.selectFirst("td > a");
 	            	String charaterUrl = "https://vansu.vn"+ a.attr("href");
-	            	System.out.println(charaterUrl);
+//	            	System.out.println(charaterUrl);
 	            	allUrl.add(charaterUrl);
 	            }
 	            buttonsChangePage = table1.select("tfoot div a");
@@ -70,7 +69,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		return allUrl;
 	}
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("src\\main\\java\\characterVanSu.json")) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterVanSu.json")) {
 		    writer.write('[');
 		
 		for(String url : allUrl) {
@@ -138,11 +137,8 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		VanSuCharacterCrawler test = new VanSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
-		System.out.println(allUrl.size());
+//		System.out.println(allUrl.size());
 		test.getData(allUrl);
-	}
-
-	public VanSuCharacterCrawler() {
 	}
 
 	@Override
@@ -153,7 +149,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		VanSuCharacterCrawler test = new VanSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
-		System.out.println(allUrl.size());
+//		System.out.println(allUrl.size());
 		test.getData(allUrl);
 	}
 

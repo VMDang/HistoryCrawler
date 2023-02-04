@@ -65,7 +65,7 @@ public class KingCharacterCrawler extends CharacterCrawler{
 		//get all urls
   		Document doc = getDoc();			
 	   Elements table = doc.select("table[cellpadding = 0] tbody");
-	   try (Writer file = new FileWriter("src\\main\\java\\vua.json")){
+	   try (Writer file = new FileWriter("src\\main\\java\\json\\King.json")){ 
 			  file.write("[\n");
 	  
 	   for(int k = 0 ; k < allUrl.size() ; k++ ) {
@@ -117,7 +117,7 @@ public class KingCharacterCrawler extends CharacterCrawler{
 								  if(value.charAt(value.length()-1)==']') {
 									  value = value.substring(0,value.indexOf("["));
 								  }
-								  System.out.println(key);
+//								  System.out.println(key);
 								  if(key.equals("Miếu hiệu")) {	  
 									  mienHieu = value;
 								  }

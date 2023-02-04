@@ -32,7 +32,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 		Elements charaterATag1 = Doc1.select("h2[itemprop=name] a");
         for(Element a : charaterATag1) {
         	String charaterUrl = "https://nguoikesu.com"+ a.attr("href");
-        	System.out.println(charaterUrl);
+//        	System.out.println(charaterUrl);
         	allUrl.add(charaterUrl);
         }
         
@@ -41,7 +41,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 		
 		while(!li_tags.get(li_tags.size()-2).className().equals("disabled page-item")) {
 			String hrefNext = "https://nguoikesu.com" + nextPageButton.select("a").get(0).attr("href");
-			System.out.println(hrefNext + "\n\n");
+//			System.out.println(hrefNext + "\n\n");
 			
 			Document page = null;
 	        try{
@@ -52,7 +52,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 	            Elements charaterATags = page.select("h2[itemprop=name] a");
 	            for(Element a : charaterATags) {
 	            	String charaterUrl = "https://nguoikesu.com"+ a.attr("href");
-	            	System.out.println(charaterUrl);
+//	            	System.out.println(charaterUrl);
 	            	allUrl.add(charaterUrl);
 	            } 
 	            li_tags = page.select("nav.pagination__wrapper li");
@@ -67,11 +67,9 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 	}
 	@Override
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json")) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterNKS.json")) {
 		    writer.write('[');
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
+		
 		for(String url : allUrl) {
 			Character nv = new Character();
 			try {
@@ -86,6 +84,9 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 				String Sinh = null;
 				String Mat = null;
 				String description = "";
+				String aotherName = null;
+				String place = null;
+				List<String> era = new ArrayList<String>();
 				if(infoBoxs.size()> 0) {
 					Element infoTable = infoBoxs.get(0).select("table").get(0);
 					Elements rows = infoTable.select("tbody tr");					
@@ -118,13 +119,13 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 						}
 					}
 					nv.setDescription(description);
-					try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
-					    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-					    gson.toJson(nv, writer);
-					    writer.write(",\n");
-					}catch(IOException e) {
-						e.printStackTrace();
-					}
+					nv.setAotherName(aotherName);
+					nv.setEra(era);
+					nv.setPlace(place);
+				    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				    gson.toJson(nv, writer);
+				    writer.write(",\n");
+					
 					
 				}else {
 					Elements pTags = articleBody.select("p");
@@ -156,13 +157,13 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 					    	  description = "";
 					      }
 					      nv.setDescription(description);
-					      try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
-							    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-							    gson.toJson(nv, writer);
-							    writer.write(",\n");
-					      }catch(IOException e) {
-							e.printStackTrace();
-					      }
+					      nv.setAotherName(aotherName);
+						  nv.setEra(era);
+						  nv.setPlace(place);
+						  Gson gson = new GsonBuilder().setPrettyPrinting().create();
+						  gson.toJson(nv, writer);
+						  writer.write(",\n");
+					      
 					    }else {
 					    	nv.setName(name);
 					    	nv.setTime("Không rõ");
@@ -175,13 +176,12 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 						    	  description = "";
 						      }
 						    nv.setDescription(description);
-						    try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
-							    Gson gson = new GsonBuilder().setPrettyPrinting().create();
-							    gson.toJson(nv, writer);
-							    writer.write(",\n");
-							}catch(IOException e) {
-								e.printStackTrace();
-							}
+						    nv.setAotherName(aotherName);
+							nv.setEra(era);
+							nv.setPlace(place);
+						    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+						    gson.toJson(nv, writer);
+						    writer.write(",\n");							
 					    }
 					}
 				}
@@ -189,7 +189,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 				e.printStackTrace();
 			}
 		}
-		try (Writer writer = new FileWriter("src\\main\\java\\json\\character.json", true)) {
+		
 		    writer.write(']');
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -204,7 +204,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 		NguoiKeSuCharacterCrawler test = new NguoiKeSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
-		System.out.println(allUrl.size());
+//		System.out.println(allUrl.size());
 		test.getData(allUrl);
 	}
 	@Override
@@ -214,7 +214,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 		NguoiKeSuCharacterCrawler test = new NguoiKeSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
-		System.out.println(allUrl.size());
+//		System.out.println(allUrl.size());
 		test.getData(allUrl);
 	}
 }
