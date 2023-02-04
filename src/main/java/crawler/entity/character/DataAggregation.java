@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import history.entity.Character;
-public class dataAggregation {
+public class DataAggregation {
 	public List<Character> loadDataJsonNKS() throws IOException {
         Gson gson = new Gson();
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/characterNKS.json"));
@@ -83,8 +83,8 @@ public class dataAggregation {
 		}
 		return nv;
 	}
-	public static void main(String[] args) throws IOException {
-		dataAggregation dA = new dataAggregation();
+	public void Start() throws IOException {
+		DataAggregation dA = new DataAggregation();
 		List<Character> listNKS = dA.loadDataJsonNKS();
 		List<Character> listVS = dA.loadDataJsonVanSu();
 		List<Character> nv = dA.Aggregation(listNKS, listVS);
