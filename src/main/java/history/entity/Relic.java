@@ -1,9 +1,14 @@
 package history.entity;
 
+import com.google.gson.Gson;
 import history.History;
 
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 public class Relic extends History {
@@ -47,7 +52,11 @@ public class Relic extends History {
     }
 
     @Override
-    public List<Relic> loadDataJson() {
-        return null;
+    public List<Relic> loadDataJson() throws IOException {
+        Gson gson = new Gson();
+        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Relic.json"));
+        List<Relic> relics = Arrays.asList(gson.fromJson(reader, Relic[].class));
+
+        return relics;
     }
 }

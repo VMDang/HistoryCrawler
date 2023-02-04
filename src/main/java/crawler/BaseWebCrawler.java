@@ -5,6 +5,8 @@ import java.util.List;
 
 public abstract class BaseWebCrawler {
     protected String url;
+
+    public BaseWebCrawler() {};
     
     public BaseWebCrawler(String url) {
         this.url = url;

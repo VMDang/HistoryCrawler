@@ -18,9 +18,9 @@ import com.google.gson.GsonBuilder;
 
 import history.entity.Character;
 
-public class NguoiKeSuCrawler extends CharacterCrawler{
+public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 
-	public NguoiKeSuCrawler(String url) {
+	public NguoiKeSuCharacterCrawler(String url) {
 		super(url);
 		// TODO Auto-generated constructor stub
 	}
@@ -195,9 +195,13 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 			e.printStackTrace();
 		}
 	}
-	public static void main(String[] args) {	
+
+	public NguoiKeSuCharacterCrawler() {
+	}
+
+	public static void main(String[] args) {
 		String url = "https://nguoikesu.com/nhan-vat";
-		NguoiKeSuCrawler test = new NguoiKeSuCrawler(url);		
+		NguoiKeSuCharacterCrawler test = new NguoiKeSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
 		System.out.println(allUrl.size());
@@ -207,7 +211,7 @@ public class NguoiKeSuCrawler extends CharacterCrawler{
 	public void start() {
 		// TODO Auto-generated method stub
 		String url = "https://nguoikesu.com/nhan-vat";
-		NguoiKeSuCrawler test = new NguoiKeSuCrawler(url);		
+		NguoiKeSuCharacterCrawler test = new NguoiKeSuCharacterCrawler(url);
 		test.connect(url);
 		List<String> allUrl = test.getAllUrl(url);
 		System.out.println(allUrl.size());
