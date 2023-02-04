@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import history.History;
 
+import java.util.List;
+
 public class Dynasty extends History {
 	
 	private String kingdom;
@@ -28,7 +30,9 @@ public class Dynasty extends History {
 	public void setKing(ArrayList<String> king) {
 		this.king = king;
 	}
-	
-	
 
+	@Override
+	public List<Dynasty> loadDataJson() {
+		return null;
+	}
 }

@@ -1,18 +1,22 @@
 package crawler;
 
+import java.io.IOException;
 import java.util.List;
 
 public abstract class BaseWebCrawler {
-    protected List<String> urls;
+    protected String url;
+
+    public BaseWebCrawler() {};
     
-    public BaseWebCrawler(List<String> urls) {
-        this.urls = urls;
+    public BaseWebCrawler(String url) {
+        this.url = url;
     }
 
-	public void setUrls(List<String> urls) {
-		this.urls = urls;
+	public void setUrls(String url) {
+		this.url = url;
 	}
 
 	public abstract boolean connect(String url);
-	
+
+    public abstract void start() throws IOException;
 }
