@@ -20,17 +20,14 @@ import com.google.gson.GsonBuilder;
 import history.entity.*;
 
 public class WikiDynastyCrawler extends DynastyCrawler {
-	private static Document doc = null;
-	private static List<Dynasty> dynastyList = new ArrayList<>();
 	
 	public WikiDynastyCrawler(String url) {
         super(url);
     }
 
-    public static Document getDoc() {
-    	return doc;
-    }
-    
+	public WikiDynastyCrawler() {
+	}
+
 	@Override
 	public boolean connect(String url) {
 		try {
@@ -101,6 +98,10 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 		WikiDynastyCrawler wikidc = new WikiDynastyCrawler(url);
 		wikidc.getData();
 	}
-	
-	
+
+	public static void main(String[] args) {
+		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
+		WikiDynastyCrawler wikidc = new WikiDynastyCrawler(url);
+		wikidc.getData();
+	}
 }

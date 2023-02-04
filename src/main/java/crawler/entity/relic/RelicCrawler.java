@@ -12,20 +12,11 @@ import org.jsoup.nodes.Document;
 import history.entity.*;
 
 public abstract class RelicCrawler extends BaseWebCrawler {
-	protected static Document doc = null;
 	protected static List<Relic> relicList = new ArrayList<Relic>();
 
 	public RelicCrawler(String url) {
 		super(url);
 		RelicCrawler.doc = null;
-	}
-
-	public static Document getDoc() {
-		return doc;
-	}
-
-	public void setDoc(Document doc) {
-		RelicCrawler.doc = doc;
 	}
 
 	public RelicCrawler() {

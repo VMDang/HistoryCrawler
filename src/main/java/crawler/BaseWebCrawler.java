@@ -1,10 +1,22 @@
 package crawler;
 
+import org.jsoup.nodes.Document;
+
 import java.io.IOException;
 import java.util.List;
 
 public abstract class BaseWebCrawler {
     protected String url;
+
+    protected static Document doc = null;
+
+    public static Document getDoc() {
+        return doc;
+    }
+
+    public static void setDoc(Document doc) {
+        BaseWebCrawler.doc = doc;
+    }
 
     public BaseWebCrawler() {};
     

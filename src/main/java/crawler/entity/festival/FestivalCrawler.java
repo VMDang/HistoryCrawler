@@ -7,17 +7,8 @@ import org.jsoup.nodes.Document;
 import java.io.IOException;
 
 public abstract class FestivalCrawler extends BaseWebCrawler {
-	protected static Document doc = null;
 	public FestivalCrawler(String url) {
 		super(url);
-	}
-
-	public static Document getDoc() {
-		return doc;
-	}
-
-	public static void setDoc(Document doc) {
-		FestivalCrawler.doc = doc;
 	}
 
 	public FestivalCrawler() {

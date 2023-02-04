@@ -4,6 +4,7 @@ import crawler.entity.character.KingCharacterCrawler;
 import crawler.entity.character.NguoiKeSuCharacterCrawler;
 import crawler.entity.character.VanSuCharacterCrawler;
 import crawler.entity.dynasty.NguoiKeSuDynastyCrawler;
+import crawler.entity.dynasty.WikiDynastyCrawler;
 import crawler.entity.event.WikiEventCrawler;
 import crawler.entity.festival.CoutureTravelFestivalCrawler;
 import crawler.entity.festival.WikiFestivalCrawler;
@@ -24,6 +25,9 @@ public class Main {
 
         NguoiKeSuDynastyCrawler nguoiKeSuDynastyCrawler = new NguoiKeSuDynastyCrawler();
         nguoiKeSuDynastyCrawler.start();
+
+        WikiDynastyCrawler wikiDynastyCrawler = new WikiDynastyCrawler();
+        wikiDynastyCrawler.start();
 
         WikiEventCrawler wikiEventCrawler = new WikiEventCrawler();
         wikiEventCrawler.start();
