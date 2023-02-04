@@ -2,6 +2,15 @@ package history.entity;
 
 import history.History;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+
+import com.google.gson.Gson;
+
 public class King extends History{
 	protected String mienHieu;
 	protected String thuyHieu;
@@ -24,6 +33,17 @@ public class King extends History{
 		super(name, time, description);
 		// TODO Auto-generated constructor stub
 	}
+
+	@Override
+	public List<King> loadDataJson() throws IOException {
+		 Gson gson = new Gson();
+	        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King.json"));
+	        List<King> dks = Arrays.asList(gson.fromJson(reader, King[].class)); 
+	        reader.close();
+
+	        return dks;
+	}
+
 	public String getMienHieu() {
 		return mienHieu;
 	}

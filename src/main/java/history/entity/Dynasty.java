@@ -2,6 +2,8 @@ package history.entity;
 
 import history.History;
 
+import java.util.List;
+
 public class Dynasty extends History {
 	
 	private String kingdom;
@@ -19,7 +21,10 @@ public class Dynasty extends History {
 	public void setCapital(String capital) {
 		this.capital = capital;
 	}
-	
-	
 
+
+	@Override
+	public List<Dynasty> loadDataJson() {
+		return null;
+	}
 }
