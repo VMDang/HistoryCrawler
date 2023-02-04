@@ -16,7 +16,7 @@ public class NguoiKeSuDynastyCrawler extends DynastyCrawler{
 
     @Override
     public void getData() {
-        File theFile = new File("src\\main\\java\\json\\Dynasties_NKS_ChangeBaseWeb.json");
+        File theFile = new File("src\\main\\java\\json\\Dynasties_NKS.json");
         this.connect(url);
         Elements names = doc.select("h3[class = item-title]	");
         Elements descriptions = doc.select("ul[class = issues] li div[class = inner] div");
