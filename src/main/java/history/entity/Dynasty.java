@@ -1,10 +1,17 @@
 package history.entity;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import history.History;
 
 import java.util.List;
+
+import com.google.gson.Gson;
 
 public class Dynasty extends History {
 	
@@ -32,7 +39,10 @@ public class Dynasty extends History {
 	}
 
 	@Override
-	public List<Dynasty> loadDataJson() {
-		return null;
+	public List<Dynasty> loadDataJson() throws IOException {
+		Gson gson = new Gson();
+		Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasties_NKS.json"));
+		List<Dynasty> dks = Arrays.asList(gson.fromJson(reader, Dynasty[].class));
+		return dks;
 	}
 }
