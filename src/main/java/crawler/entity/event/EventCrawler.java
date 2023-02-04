@@ -7,18 +7,9 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
 public abstract class EventCrawler extends BaseWebCrawler {
-	protected static Document doc = null;
     public EventCrawler(String url) {
         super(url);
     }
-
-	public static Document getDoc() {
-		return doc;
-	}
-
-	public static void setDoc(Document doc) {
-		EventCrawler.doc = doc;
-	}
 
 	public EventCrawler() {
 	}
