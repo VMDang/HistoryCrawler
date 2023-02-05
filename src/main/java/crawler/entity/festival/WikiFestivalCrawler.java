@@ -2,6 +2,7 @@ package crawler.entity.festival;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import crawler.manager.CrawlerManager;
 import history.entity.Festival;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -73,6 +74,7 @@ public class WikiFestivalCrawler extends FestivalCrawler{
         }
 
         try(FileWriter writer = new FileWriter("src\\main\\java\\json\\festival_Wiki1.json", true)) {
+            CrawlerManager.setEntityCrawled("Lễ hội - Wikipedia", listTime.size());
             for (int i = 1; i < listTime.size(); i++) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(festival[i], writer);
@@ -89,6 +91,7 @@ public class WikiFestivalCrawler extends FestivalCrawler{
         String url = "https://vi.wikipedia.org/wiki/L%E1%BB%85_h%E1%BB%99i_Vi%E1%BB%87t_Nam";
         WikiFestivalCrawler festivalCrawler = new WikiFestivalCrawler(url);
         festivalCrawler.getData();
+        CrawlerManager.setBaseWebList("Festival_Wiki", url);
     }
 
     public static void main(String[] args) {

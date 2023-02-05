@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 
+import crawler.manager.CrawlerManager;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -50,7 +51,7 @@ public class KingCharacterCrawler extends CharacterCrawler{
 				  Element x = i1.select("td").get(1);
 				  Element y = x.getElementsByTag("a").get(0);
 				  links.add(y.attr("href"));
-			 
+				  CrawlerManager.setCountUrlBrowsed();
 			  }
 		   }
 		   return links;
@@ -65,9 +66,10 @@ public class KingCharacterCrawler extends CharacterCrawler{
 		//get all urls
   		Document doc = getDoc();			
 	   Elements table = doc.select("table[cellpadding = 0] tbody");
-	   try (Writer file = new FileWriter("src\\main\\java\\json\\King.json")){ 
+	   try (Writer file = new FileWriter("src\\main\\java\\json\\King1.json")){
 			  file.write("[\n");
-	  
+
+		int count = 0;
 	   for(int k = 0 ; k < allUrl.size() ; k++ ) {
 		   		String name = null;
 		   		String time = null;
@@ -189,13 +191,18 @@ public class KingCharacterCrawler extends CharacterCrawler{
 				  kingDetail.setTienNhiem(tienNhiem);
 				  kingDetail.setTrieuDai(trieuDai);
 				  kingDetail.setTriVi(triVi);
+
+				  count++;
 				  Gson gson = new GsonBuilder().setPrettyPrinting().create();
 				  gson.toJson(kingDetail, file);
 				  file.write(",\n");  
 			  }
 	   
 		   }
-	   file.write("]"); 
+
+	   CrawlerManager.setEntityCrawled("Vua - Wikipedia", count);
+	   file.write("]");
+
 	   }catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -209,5 +216,6 @@ public class KingCharacterCrawler extends CharacterCrawler{
 		kingCrawler.connect(url);
 		List<String> allUrls = kingCrawler.getAllUrl(url);
 		kingCrawler.getData(allUrls);
+		CrawlerManager.setBaseWebList("King", url);
 	}
 }

@@ -42,7 +42,7 @@ public class MainScreen extends JFrame {
 		});
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void run() throws IOException {
 		Store store = new Store();
 		Event event1 = new Event();
 		List<Event> events =  event1.loadDataJson();

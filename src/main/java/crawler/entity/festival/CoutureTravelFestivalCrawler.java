@@ -2,6 +2,7 @@ package crawler.entity.festival;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import crawler.manager.CrawlerManager;
 import history.entity.Festival;
 import org.jsoup.nodes.Element;
 
@@ -52,6 +53,7 @@ public class CoutureTravelFestivalCrawler extends FestivalCrawler{
             festival[i].setDescription(listDescription.get(i));
         }
         try (FileWriter writer = new FileWriter("src\\main\\java\\json\\festival_Couture1.json", true)){
+            CrawlerManager.setEntityCrawled("Lễ hội - Couture", listName.size());
             for(int i=0;i<listName.size();i++) {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 gson.toJson(festival[i], writer);
@@ -70,6 +72,7 @@ public class CoutureTravelFestivalCrawler extends FestivalCrawler{
         String url = "https://www.couturetravelcompany.com/cac-le-hoi-o-viet-nam/";
         CoutureTravelFestivalCrawler festivalCrawler = new CoutureTravelFestivalCrawler(url);
         festivalCrawler.getData();
+        CrawlerManager.setBaseWebList("Festival_Couture", url);
     }
 
     public static void main(String[] args) {

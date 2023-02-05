@@ -89,7 +89,7 @@ public class DataAggregation {
 		List<Character> listVS = dA.loadDataJsonVanSu();
 		List<Character> nv = dA.Aggregation(listNKS, listVS);
 		
-		try (Writer file = new FileWriter("src\\main\\java\\json\\character.json")){ 
+		try (Writer file = new FileWriter("src\\main\\java\\json\\character1.json")){
 			  file.write("[\n");
 			  for(Character e : nv) { 
 				  Gson gson = new GsonBuilder().setPrettyPrinting().create();
