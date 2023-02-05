@@ -35,6 +35,7 @@ public class WikiEventCrawler extends EventCrawler{
     public void getData() throws IOException {
         File theFile = new File("src\\main\\java\\json\\event1.json");
         this.connect(url);
+        int count = 0;
         Elements itemsElements = doc.select("div[class=mw-parser-output]");
         for (Element element : itemsElements) {
             Elements e1 = element.getElementsByTag("p");
@@ -48,6 +49,7 @@ public class WikiEventCrawler extends EventCrawler{
                         String hrefString = element2.nextElementSibling().getElementsByTag("a").attr("href");
                         Elements eleDocument = Jsoup.connect("https://vi.wikipedia.org/"+hrefString).get().select("div[class=mw-parser-output]");
                         event.setDescription(eleDocument.select("p").get(0).text());
+                        CrawlerManager.setCountUrlBrowsed();
                     }
                     else {
                         event.setName(element2.text());
@@ -57,9 +59,11 @@ public class WikiEventCrawler extends EventCrawler{
                             String hrefString = element2.getElementsByTag("a").attr("href");
                             Elements eleDocument = Jsoup.connect("https://vi.wikipedia.org/"+hrefString).get().select("div[class=mw-parser-output]");
                             event.setDescription(eleDocument.select("p").get(0).text());
+                            CrawlerManager.setCountUrlBrowsed();
                         }
                     }
 //                    System.out.println(event.getName());
+                    count++;
                     this.eventList.add(event);
                 }
             }
@@ -69,6 +73,9 @@ public class WikiEventCrawler extends EventCrawler{
             Gson pretty_gs = new GsonBuilder().setPrettyPrinting().create();
             pretty_gs.toJson(this.eventList, fileWriter);
             fileWriter.close();
+
+            CrawlerManager.setEntityCrawled("Sự kiên - Wiki", count);
+
         }catch (IOException e){
             System.err.println("Error in writing a file.");
         }
@@ -81,12 +88,12 @@ public class WikiEventCrawler extends EventCrawler{
         eventCrawler.getData();
         CrawlerManager.setBaseWebList("Event", url);
         CrawlerManager.setEntityCrawled("Sự kiên - Wiki", eventList.size());
+
     }
 
     public static void main(String[] args) throws IOException {
         String url = "https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
         EventCrawler eventCrawler = new WikiEventCrawler(url);
-        eventCrawler.connect(url);
-        eventCrawler.getData();
+        eventCrawler.start();
     }
 }

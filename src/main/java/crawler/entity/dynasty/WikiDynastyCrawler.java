@@ -99,7 +99,7 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 		WikiDynastyCrawler wikidc = new WikiDynastyCrawler(url);
 		wikidc.getData();
 		CrawlerManager.setBaseWebList("Dynasty_Wiki", url);
-		CrawlerManager.setEntityCrawled("Triều đại - Người kể sử", dynastyList.size());
+		CrawlerManager.setEntityCrawled("Triều đại - Wiki", dynastyList.size());
 	}
 
 	public static void main(String[] args) {

@@ -163,6 +163,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 					      nv.setAotherName(aotherName);
 						  nv.setEra(era);
 						  nv.setPlace(place);
+						  count++;
 						  Gson gson = new GsonBuilder().setPrettyPrinting().create();
 						  gson.toJson(nv, writer);
 						  writer.write(",\n");

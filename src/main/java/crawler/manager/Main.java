@@ -24,7 +24,7 @@ public class Main {
     public void CrawlerToJson() throws IOException {
         KingCharacterCrawler kingCrawler = new KingCharacterCrawler();
         kingCrawler.start();
-//
+
         NguoiKeSuCharacterCrawler nguoiKeSuCharacterCrawler = new NguoiKeSuCharacterCrawler();
         nguoiKeSuCharacterCrawler.start();
 
@@ -40,7 +40,6 @@ public class Main {
         WikiDynastyCrawler wikiDynastyCrawler = new WikiDynastyCrawler();
         wikiDynastyCrawler.start();
 
-//
         WikiEventCrawler wikiEventCrawler = new WikiEventCrawler();
         wikiEventCrawler.start();
 
@@ -125,6 +124,7 @@ public class Main {
                 0, 3, null, options, options[0]);
         if (dessert == 0) {
             main.CrawlerToJson();
+
         }
         if (dessert == 1) {
             main.JsonToDisplay();
