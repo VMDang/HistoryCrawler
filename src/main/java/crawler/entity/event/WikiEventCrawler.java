@@ -87,7 +87,6 @@ public class WikiEventCrawler extends EventCrawler{
         EventCrawler eventCrawler = new WikiEventCrawler(url);
         eventCrawler.getData();
         CrawlerManager.setBaseWebList("Event", url);
-        CrawlerManager.setEntityCrawled("Sự kiên - Wiki", eventList.size());
 
     }
 
