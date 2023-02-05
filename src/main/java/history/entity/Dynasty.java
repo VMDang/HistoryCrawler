@@ -48,6 +48,6 @@ public class Dynasty extends History {
 	@Override
 	public String hienthi() {
 		return "Tên nước: " + this.getKingdom() + "\n" + "Thủ đô: " + this.getCapital() + "\n" + "các đời vua: " + this.getKing().toString()
-				+ "Chi tiết: " + this.getDescription();
+				+"\n"+ "Chi tiết: " + this.getDescription();
 	}
 }
