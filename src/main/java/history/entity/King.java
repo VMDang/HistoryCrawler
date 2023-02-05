@@ -136,5 +136,12 @@ public class King extends History{
 		else this.thanMau = "Không rõ";
 	}
 	
-	
+	@Override
+	public String hienthi() {
+		return "Miếu hiệu: " + this.getMienHieu() + "\n" + "Thụy hiệu: " + this.getThuyHieu() + "\n" + 
+			"Niên hiệu: " + this.getNienHieu() + "\n" + "Trị vì: " + this.getTriVi() + "\n" + "Tiền nhiệm: " + this.getTienNhiem() + "\n"
+			+ "Kế nhiệm: " + this.getKeNhiem() + "\n" + "Sinh: " + this.getSinh() + "\n" + "Mất: " + this.getMat() + "\n"
+			+ "Triều đại: " + this.getTrieuDai() + "\n" + "An Táng: " + this.getAntang() + "\n" + "Thân phụ: " + this.getThanPhu() + "\n"
+			+ "Thân mẫu: " + this.getThanMau() + "\n" + "Chi tiết: " + this.getDescription();
+	}
 }

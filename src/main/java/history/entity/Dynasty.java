@@ -45,4 +45,9 @@ public class Dynasty extends History {
 		List<Dynasty> dks = Arrays.asList(gson.fromJson(reader, Dynasty[].class));
 		return dks;
 	}
+	@Override
+	public String hienthi() {
+		return "Tên nước: " + this.getKingdom() + "\n" + "Thủ đô: " + this.getCapital() + "\n" + "các đời vua: " + this.getKing().toString()
+				+"\n"+ "Chi tiết: " + this.getDescription();
+	}
 }

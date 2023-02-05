@@ -15,7 +15,7 @@ import org.jsoup.select.Elements;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import history.entity.*;
+import history.entity.Dynasty;
 
 public class WikiDynastyCrawler extends DynastyCrawler {
 	
