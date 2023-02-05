@@ -8,14 +8,14 @@ import java.util.List;
 public abstract class BaseWebCrawler {
     protected String url;
 
-    protected static Document doc = null;
+    protected Document doc = null;
 
-    public static Document getDoc() {
-        return doc;
+    public Document getDoc() {
+        return this.doc;
     }
 
-    public static void setDoc(Document doc) {
-        BaseWebCrawler.doc = doc;
+    public void setDoc(Document doc) {
+        this.doc = doc;
     }
 
     public BaseWebCrawler() {};

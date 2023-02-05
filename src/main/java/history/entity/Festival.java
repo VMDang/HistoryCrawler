@@ -56,7 +56,7 @@ public class Festival extends History {
 
 	@Override
 	public String hienthi() {
-		return "Địa điểm: " + this.getPlace() + "\n" + "Lần đầu tổ chức: " + this.getFirstTime() + "\n" + "Nhân vật: " + this.getCharacter()
+		return "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Địa điểm: " + this.getPlace() + "\n" + "Lần đầu tổ chức: " + this.getFirstTime() + "\n" + "Nhân vật: " + this.getCharacter()
 			+ "\n" + "Chi Tiết: " + this.getDescription();
 	}
 }
