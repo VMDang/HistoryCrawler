@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import crawler.manager.CrawlerManager;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -34,6 +35,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
         	String charaterUrl = "https://nguoikesu.com"+ a.attr("href");
 //        	System.out.println(charaterUrl);
         	allUrl.add(charaterUrl);
+			CrawlerManager.setCountUrlBrowsed();
         }
         
 		Elements li_tags = Doc1.select("nav.pagination__wrapper li");
@@ -69,7 +71,8 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 	public void getData(List<String> allUrl) {
 		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterNKS.json")) {
 		    writer.write('[');
-		
+
+		int count = 0;
 		for(String url : allUrl) {
 			Character nv = new Character();
 			try {
@@ -179,6 +182,8 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 						    nv.setAotherName(aotherName);
 							nv.setEra(era);
 							nv.setPlace(place);
+
+							count++;
 						    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 						    gson.toJson(nv, writer);
 						    writer.write(",\n");							
@@ -189,8 +194,9 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 				e.printStackTrace();
 			}
 		}
-		
 		    writer.write(']');
+			CrawlerManager.setEntityCrawled("Nhân vật - Người kể sử", count);
+
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -216,5 +222,6 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 		List<String> allUrl = test.getAllUrl(url);
 //		System.out.println(allUrl.size());
 		test.getData(allUrl);
+		CrawlerManager.setBaseWebList("Character", url);
 	}
 }

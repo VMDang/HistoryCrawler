@@ -2,6 +2,7 @@ package crawler.entity.event;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import crawler.manager.CrawlerManager;
 import history.entity.Event;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -23,7 +24,8 @@ public class WikiEventCrawler extends EventCrawler{
         Event event = new Event();
         this.connect(url);
         String title = doc.title();
-        System.out.println("Title : " + title);
+//        System.out.println("Title : " + title);
+        int count = 0;
         Elements itemsElements = doc.select("div[class=mw-parser-output]");
         for (Element element : itemsElements) {
             Elements e1 = element.getElementsByTag("p");
@@ -35,6 +37,7 @@ public class WikiEventCrawler extends EventCrawler{
                         String hrefString = element2.nextElementSibling().getElementsByTag("a").attr("href");
                         Elements eleDocument = Jsoup.connect("https://vi.wikipedia.org/"+hrefString).get().select("div[class=mw-parser-output]");
                         event.setDescription(eleDocument.select("p").get(0).text());
+                        CrawlerManager.setCountUrlBrowsed();
                     }
                     else {
                         event.setName(element2.text());
@@ -43,6 +46,7 @@ public class WikiEventCrawler extends EventCrawler{
                             String hrefString = element2.getElementsByTag("a").attr("href");
                             Elements eleDocument = Jsoup.connect("https://vi.wikipedia.org/"+hrefString).get().select("div[class=mw-parser-output]");
                             event.setDescription(eleDocument.select("p").get(0).text());
+                            CrawlerManager.setCountUrlBrowsed();
                         }
                     }
                 }
@@ -50,25 +54,29 @@ public class WikiEventCrawler extends EventCrawler{
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     gson.toJson(event, writer);
                     writer.write(",\n");
+                    count++;
                 }
                 catch(IOException e) {
                     e.printStackTrace();
                 }
             }
         }
+
+        CrawlerManager.setEntityCrawled("Sự kiện - WiKipedia", count);
     }
 
     @Override
     public void start() throws IOException {
         String url = "https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
         EventCrawler eventCrawler = new WikiEventCrawler(url);
+        CrawlerManager.setBaseWebList("Event_Wiki", url);
         eventCrawler.getData();
+
     }
 
     public static void main(String[] args) throws IOException {
         String url = "https://vi.wikipedia.org/wiki/Ni%C3%AAn_bi%E1%BB%83u_l%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
         EventCrawler eventCrawler = new WikiEventCrawler(url);
-        eventCrawler.connect(url);
         eventCrawler.getData();
     }
 }

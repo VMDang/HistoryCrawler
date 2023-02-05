@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import crawler.manager.CrawlerManager;
 import history.History;
 
 import java.util.List;
@@ -43,6 +44,9 @@ public class Dynasty extends History {
 		Gson gson = new Gson();
 		Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/Dynasties_NKS.json"));
 		List<Dynasty> dks = Arrays.asList(gson.fromJson(reader, Dynasty[].class));
+
+		CrawlerManager.setEntityDisplay("Dynasty", dks.size());
+
 		return dks;
 	}
 }

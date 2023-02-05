@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import crawler.manager.CrawlerManager;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -42,7 +43,7 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 	
 	@Override
 	public void getData() {
-		File theFile = new File("src\\main\\java\\json\\Dynasties_wiki.json");
+		File theFile = new File("src\\main\\java\\json\\Dynasties_wiki1.json");
 		this.connect(url);
 		String aaa = "Thủ đô";
 		String bbb = "Chính phủ";
@@ -60,6 +61,7 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 				else {
 					Dynasty dk1 = new Dynasty();
 					String link = ("https://vi.wikipedia.org" + linkTrieuDai.get(l));
+					CrawlerManager.setCountUrlBrowsed();
 					Connection webConnection = Jsoup.connect(link);
 					Document data;
 					try {
@@ -97,6 +99,8 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 		String url = "https://vi.wikipedia.org/wiki/L%E1%BB%8Bch_s%E1%BB%AD_Vi%E1%BB%87t_Nam";
 		WikiDynastyCrawler wikidc = new WikiDynastyCrawler(url);
 		wikidc.getData();
+		CrawlerManager.setBaseWebList("Dynasty_Wiki", url);
+		CrawlerManager.setEntityCrawled("Triều đại - Người kể sử", dynastyList.size());
 	}
 
 	public static void main(String[] args) {

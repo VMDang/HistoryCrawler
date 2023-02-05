@@ -2,6 +2,7 @@ package crawler.entity.relic;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import crawler.manager.CrawlerManager;
 import history.entity.Relic;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -29,8 +30,9 @@ public class DsvhRelicCrawler extends RelicCrawler{
             if (relicURL.contentEquals("http://dsvh.gov.vn/http://di-tich-kien-truc-nghe-thuat-chua-keo-huyen-vu-thu-tinh-thai-binh-2964")){
                 continue;
             }else {
-                System.out.println(relicURL);
+//                System.out.println(relicURL);
                 allUrl.add(relicURL);
+                CrawlerManager.setCountUrlBrowsed();
             }
         }
         return allUrl;
@@ -120,6 +122,8 @@ public class DsvhRelicCrawler extends RelicCrawler{
         String url = "http://dsvh.gov.vn/danh-muc-di-tich-quoc-gia-dac-biet-1752";
         DsvhRelicCrawler relicCrawler = new DsvhRelicCrawler(url);
         relicCrawler.getData();
+        CrawlerManager.setBaseWebList("Relic_Dsvh", url);
+        CrawlerManager.setEntityCrawled("Di tích - Dsvh", relicList.size());
     }
 
     public static void main(String[] args) {
