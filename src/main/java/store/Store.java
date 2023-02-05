@@ -13,6 +13,7 @@ public class Store {
 	}
 	
 	public void addHistory(History history) {
+		
 		itemHistory.add(history);
 	}
 }
