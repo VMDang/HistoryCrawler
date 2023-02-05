@@ -59,5 +59,9 @@ public class Relic extends History {
 
         return relics;
     }
+    @Override
+	public String hienthi() {
+		return "Tỉnh:" + this.getProvince() + "\n" + "Chứng nhận: " + this.getCertifacte() + "\n" + "Chi tiết: " + this.getDescription();
+	}
    
 }

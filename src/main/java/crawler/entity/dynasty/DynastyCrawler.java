@@ -9,7 +9,7 @@ import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import history.entity.*;
+import history.entity.Dynasty;
 
 public abstract class DynastyCrawler extends BaseWebCrawler {
 	protected static List<Dynasty> dynastyList = new ArrayList<>();
