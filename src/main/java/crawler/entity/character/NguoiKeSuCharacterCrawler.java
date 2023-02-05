@@ -56,6 +56,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 	            	String charaterUrl = "https://nguoikesu.com"+ a.attr("href");
 //	            	System.out.println(charaterUrl);
 	            	allUrl.add(charaterUrl);
+					CrawlerManager.setCountUrlBrowsed();
 	            } 
 	            li_tags = page.select("nav.pagination__wrapper li");
 		        nextPageButton = li_tags.get(li_tags.size()-2);

@@ -60,6 +60,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 	            	String charaterUrl = "https://vansu.vn"+ a.attr("href");
 //	            	System.out.println(charaterUrl);
 	            	allUrl.add(charaterUrl);
+					CrawlerManager.setCountUrlBrowsed();
 	            }
 	            buttonsChangePage = table1.select("tfoot div a");
 	    		nextPageButton = buttonsChangePage.get(buttonsChangePage.size()-1);

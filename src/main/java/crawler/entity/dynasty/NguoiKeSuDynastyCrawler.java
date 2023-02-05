@@ -49,7 +49,6 @@ public class NguoiKeSuDynastyCrawler extends DynastyCrawler{
         dynasty.getData();
         CrawlerManager.setBaseWebList("Dynasty_NKS", url);
         CrawlerManager.setEntityCrawled("Triều đại - Người kể sử", dynastyList.size());
-        System.out.println(dynastyList.size());
     }
 
     public static void main(String[] args) {

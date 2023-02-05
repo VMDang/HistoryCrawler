@@ -22,17 +22,17 @@ import java.util.Map;
 public class Main {
 
     public void CrawlerToJson() throws IOException {
-        KingCharacterCrawler kingCrawler = new KingCharacterCrawler();
-        kingCrawler.start();
-
-        NguoiKeSuCharacterCrawler nguoiKeSuCharacterCrawler = new NguoiKeSuCharacterCrawler();
-        nguoiKeSuCharacterCrawler.start();
-
-        VanSuCharacterCrawler vanSuCharacterCrawler = new VanSuCharacterCrawler();
-        vanSuCharacterCrawler.start();
-
-        DataAggregation mergeCharacter = new DataAggregation();
-        mergeCharacter.Start();
+//        KingCharacterCrawler kingCrawler = new KingCharacterCrawler();
+//        kingCrawler.start();
+//
+//        NguoiKeSuCharacterCrawler nguoiKeSuCharacterCrawler = new NguoiKeSuCharacterCrawler();
+//        nguoiKeSuCharacterCrawler.start();
+//
+//        VanSuCharacterCrawler vanSuCharacterCrawler = new VanSuCharacterCrawler();
+//        vanSuCharacterCrawler.start();
+//
+//        DataAggregation mergeCharacter = new DataAggregation();
+//        mergeCharacter.Start();
 
         NguoiKeSuDynastyCrawler nguoiKeSuDynastyCrawler = new NguoiKeSuDynastyCrawler();
         nguoiKeSuDynastyCrawler.start();
