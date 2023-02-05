@@ -34,6 +34,7 @@ public abstract class DynastyCrawler extends BaseWebCrawler {
 		try {
 			Document dcm = Jsoup.connect(url).get();
 			setDoc(dcm);
+			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
