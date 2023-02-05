@@ -138,7 +138,7 @@ public class King extends History{
 	
 	@Override
 	public String hienthi() {
-		return "Miếu hiệu: " + this.getMienHieu() + "\n" + "Thụy hiệu: " + this.getThuyHieu() + "\n" + 
+		return "Tên: " + this.getName() + "\n"  + "Miếu hiệu: " + this.getMienHieu() + "\n" + "Thụy hiệu: " + this.getThuyHieu() + "\n" + 
 			"Niên hiệu: " + this.getNienHieu() + "\n" + "Trị vì: " + this.getTriVi() + "\n" + "Tiền nhiệm: " + this.getTienNhiem() + "\n"
 			+ "Kế nhiệm: " + this.getKeNhiem() + "\n" + "Sinh: " + this.getSinh() + "\n" + "Mất: " + this.getMat() + "\n"
 			+ "Triều đại: " + this.getTrieuDai() + "\n" + "An Táng: " + this.getAntang() + "\n" + "Thân phụ: " + this.getThanPhu() + "\n"

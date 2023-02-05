@@ -39,6 +39,6 @@ public class Event extends History {
 	}
 	@Override
 	public String hienthi() {
-		return  "Triều đại: " + this.dynasty.getName() + "\n" + "Chi tiết: " + this.getDescription();
+		return  "Tên: " + this.getName() + "\n" + "Thời gian: " + this.getTime() + "\n" + "Triều đại: " + this.dynasty.getName() + "\n" + "Chi tiết: " + this.getDescription();
 	}
 }
