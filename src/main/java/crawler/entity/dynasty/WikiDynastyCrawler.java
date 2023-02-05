@@ -1,7 +1,5 @@
 package crawler.entity.dynasty;
 
-import crawler.BaseWebCrawler;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,7 +29,8 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 	@Override
 	public boolean connect(String url) {
 		try {
-			WikiDynastyCrawler.doc = Jsoup.connect(url).get();
+			Document dcm = Jsoup.connect(url).get();
+			setDoc(dcm);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
