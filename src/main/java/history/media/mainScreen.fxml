@@ -18,7 +18,7 @@
 
 <BorderPane style="-fx-background-image: url(&quot;..\..\img\54481.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <left>
-      <VBox prefHeight="710.0" prefWidth="242.0" style="-fx-background-image: url('file:D:\HistoryCrawler\src\main\java\img');" BorderPane.alignment="CENTER">
+      <VBox prefHeight="710.0" prefWidth="242.0" style="-fx-background-image: url('file:src\main\java\img');" BorderPane.alignment="CENTER">
          <children>
             <Pane prefHeight="83.0" prefWidth="242.0" style="-fx-background-color: #f48248;">
                <cursor>
