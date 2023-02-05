@@ -16,7 +16,7 @@ public abstract class RelicCrawler extends BaseWebCrawler {
 
 	public RelicCrawler(String url) {
 		super(url);
-		RelicCrawler.doc = null;
+		this.doc = null;
 	}
 
 	public RelicCrawler() {

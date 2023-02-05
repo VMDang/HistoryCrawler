@@ -32,7 +32,8 @@ public abstract class DynastyCrawler extends BaseWebCrawler {
 	@Override
 	public boolean connect(String url) {
 		try {
-			DynastyCrawler.doc = Jsoup.connect(url).get();
+			Document dcm = Jsoup.connect(url).get();
+			setDoc(dcm);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();

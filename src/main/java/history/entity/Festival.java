@@ -53,4 +53,5 @@ public class Festival extends History {
     public void setCharacter(String character) {
         this.character = character;
     }
+ 
 }
