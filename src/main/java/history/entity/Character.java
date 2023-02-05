@@ -70,5 +70,9 @@ public class Character extends History {
 	public void setEra(List<String> era) {
 		this.era = era;
 	}
-	
+	@Override
+	public String hienthi() {
+		return "Tên khác: " + this.getAotherName() + "\n" + "Quê quán: " + this.getPlace() + "\n" + "Thời: " + this.getEra().toString()
+				+ "\n" + "Chi tiết: " + this.getDescription();
+	}
 }

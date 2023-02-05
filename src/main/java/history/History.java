@@ -46,4 +46,17 @@ public abstract class History {
     }
 
     public abstract List loadDataJson() throws IOException;
+    public boolean filterProperty(String filter, String type) {
+        if (filter == null || filter.isEmpty()) {
+            return true;
+        } else {
+    		if (type == "name") {
+    			if (this.getName().toLowerCase().indexOf(filter.toLowerCase()) != -1) {
+    				return true;
+    			}
+    		}
+        return false;
+        }
+	}
+	public abstract String hienthi();
 }

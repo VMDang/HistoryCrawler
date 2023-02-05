@@ -1,7 +1,5 @@
 package crawler.entity.dynasty;
 
-import crawler.BaseWebCrawler;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,7 +16,7 @@ import org.jsoup.select.Elements;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import history.entity.*;
+import history.entity.Dynasty;
 
 public class WikiDynastyCrawler extends DynastyCrawler {
 	
@@ -32,7 +30,8 @@ public class WikiDynastyCrawler extends DynastyCrawler {
 	@Override
 	public boolean connect(String url) {
 		try {
-			WikiDynastyCrawler.doc = Jsoup.connect(url).get();
+			Document dcm = Jsoup.connect(url).get();
+			setDoc(dcm);
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();

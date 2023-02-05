@@ -14,7 +14,7 @@ import java.util.*;
 public abstract class CharacterCrawler extends BaseWebCrawler {
     public CharacterCrawler(String url) {
         super(url);
-        CharacterCrawler.doc = null;
+        this.doc = null;
     }
 
 	public CharacterCrawler() {

@@ -56,4 +56,9 @@ public class Festival extends History {
     public void setCharacter(String character) {
         this.character = character;
     }
+    @Override
+	public String hienthi() {
+		return "Địa điểm: " + this.getPlace() + "\n" + "Lần đầu tổ chức: " + this.getFirstTime() + "\n" + "Nhân vật: " + this.getCharacter()
+			+ "\n" + "Chi Tiết: " + this.getDescription();
+	}
 }

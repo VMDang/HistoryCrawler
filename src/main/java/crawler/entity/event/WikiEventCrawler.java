@@ -2,15 +2,21 @@ package crawler.entity.event;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+<<<<<<< HEAD
 import crawler.manager.CrawlerManager;
 import history.entity.Event;
+=======
+
+
+
+>>>>>>> 7b2930635feed8862cd5192b9d5a9e2563a59e22
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
+import history.entity.Event;
 public class WikiEventCrawler extends EventCrawler{
     public WikiEventCrawler(String url) {
         super(url);
