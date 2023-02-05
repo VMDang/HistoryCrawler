@@ -72,7 +72,7 @@ public class Character extends History {
 	}
 	@Override
 	public String hienthi() {
-		return "Tên khác: " + this.getAotherName() + "\n" + "Quê quán: " + this.getPlace() + "\n" + "Thời: " + this.getEra().toString()
+		return "Tên: " + this.getName() + "\n" + "Năm sinh - năm mất: " + this.getTime() + "\n" + "Tên khác: " + this.getAotherName() + "\n" + "Quê quán: " + this.getPlace() + "\n" + "Thời: " + this.getEra().toString()
 				+ "\n" + "Chi tiết: " + this.getDescription();
 	}
 }

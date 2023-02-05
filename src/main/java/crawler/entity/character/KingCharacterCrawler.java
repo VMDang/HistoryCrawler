@@ -66,7 +66,7 @@ public class KingCharacterCrawler extends CharacterCrawler{
 		//get all urls
   		Document doc = getDoc();			
 	   Elements table = doc.select("table[cellpadding = 0] tbody");
-	   try (Writer file = new FileWriter("src\\main\\java\\json\\King.json")){
+	   try (Writer file = new FileWriter("src\\main\\java\\json\\King1.json")){
 			  file.write("[\n");
 
 		int count = 0;

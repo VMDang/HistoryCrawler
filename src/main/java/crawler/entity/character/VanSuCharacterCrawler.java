@@ -72,7 +72,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		return allUrl;
 	}
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterVanSu.json")) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterVanSu1.json")) {
 		    writer.write('[');
 
 		int count = 0;

@@ -69,7 +69,7 @@ public class NguoiKeSuCharacterCrawler extends CharacterCrawler{
 	}
 	@Override
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterNKS.json")) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterNKS1.json")) {
 		    writer.write('[');
 
 		int count = 0;

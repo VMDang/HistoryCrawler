@@ -46,4 +46,8 @@ public class CrawlerManager {
     public static int totalUrlBrowsed() {
         return countUrlBrowsed + BaseWebList.size();
     }
+
+    public static Map<String, Integer> getEntityDisplay() {
+        return entityDisplay;
+    }
 }

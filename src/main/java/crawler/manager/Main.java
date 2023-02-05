@@ -10,6 +10,7 @@ import crawler.entity.event.WikiEventCrawler;
 import crawler.entity.festival.CoutureTravelFestivalCrawler;
 import crawler.entity.festival.WikiFestivalCrawler;
 import crawler.entity.relic.DsvhRelicCrawler;
+import history.media.MainScreen;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,7 +24,7 @@ public class Main {
     public void CrawlerToJson() throws IOException {
         KingCharacterCrawler kingCrawler = new KingCharacterCrawler();
         kingCrawler.start();
-
+//
         NguoiKeSuCharacterCrawler nguoiKeSuCharacterCrawler = new NguoiKeSuCharacterCrawler();
         nguoiKeSuCharacterCrawler.start();
 
@@ -39,6 +40,7 @@ public class Main {
         WikiDynastyCrawler wikiDynastyCrawler = new WikiDynastyCrawler();
         wikiDynastyCrawler.start();
 
+//
         WikiEventCrawler wikiEventCrawler = new WikiEventCrawler();
         wikiEventCrawler.start();
 
@@ -88,8 +90,31 @@ public class Main {
         return;
     }
 
-    public void JsonToDisplay() {
+    public void JsonToDisplay() throws IOException {
+        MainScreen.run();
 
+        Map<String, Integer> entityDisplay = CrawlerManager.getEntityDisplay();
+
+        final String[] showEntityDisplay = {""};
+        entityDisplay.forEach((key, value) -> {
+            if (key.contains("Relic")){
+                showEntityDisplay[0] += "Di tích     : " + value + "\n";
+            }else if (key.contains("Festival")){
+                showEntityDisplay[0] += "Lễ hội      : " + value + "\n";
+            } else if (key.contains("Dynasty")) {
+                showEntityDisplay[0] += "Triều đại   : " + value + "\n";
+            } else if (key.contains("Character")) {
+                showEntityDisplay[0] += "Nhân vật    : " + value + "\n";
+            } else if (key.contains("King")) {
+                showEntityDisplay[0] += "Vua         : " + value + "\n";
+            }
+        });
+
+        JOptionPane optionPane = new NarrowOptionPane();
+        optionPane.setMessage("Danh sách URL chính: \n" + showEntityDisplay[0]);
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Tổng số dữ liệu hiển thị \n");
+        dialog.setVisible(true);
     }
 
     public static void main(String[] args) throws IOException {
