@@ -12,22 +12,14 @@ import org.jsoup.nodes.Document;
 import java.util.*;
 
 public abstract class CharacterCrawler extends BaseWebCrawler {
-	private static Document doc;
     public CharacterCrawler(String url) {
         super(url);
-        CharacterCrawler.doc = null;
+        this.doc = null;
     }
 
 	public CharacterCrawler() {
 	}
 
-	public static Document getDoc() {
-		return doc;
-	}
-
-	public void setDoc(Document doc) {
-		CharacterCrawler.doc = doc;
-	}
 	@Override
 	public boolean connect(String url) {
 		 Document document = null;
@@ -47,7 +39,5 @@ public abstract class CharacterCrawler extends BaseWebCrawler {
 	public abstract List<String> getAllUrl(String url);
 	public abstract void getData(List<String> allUrl) ;
 	public abstract void start();
-
-
 
 }

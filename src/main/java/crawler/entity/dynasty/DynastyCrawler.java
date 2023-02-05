@@ -12,15 +12,10 @@ import org.jsoup.nodes.Document;
 import history.entity.*;
 
 public abstract class DynastyCrawler extends BaseWebCrawler {
-	protected static Document doc = null;
 	protected static List<Dynasty> dynastyList = new ArrayList<>();
 
 	public DynastyCrawler(String url) {
 		super(url);
-	}
-
-	public static Document getDoc() {
-		return doc;
 	}
 
 	public static List<Dynasty> getDynastyList() {
@@ -37,8 +32,8 @@ public abstract class DynastyCrawler extends BaseWebCrawler {
 	@Override
 	public boolean connect(String url) {
 		try {
-			DynastyCrawler.doc = Jsoup.connect(url).get();
-			return true;
+			Document dcm = Jsoup.connect(url).get();
+			setDoc(dcm);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
