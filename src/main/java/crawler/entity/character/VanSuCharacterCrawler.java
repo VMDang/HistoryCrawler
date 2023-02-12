@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+
+import crawler.manager.CrawlerManager;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -35,6 +37,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
         	String charaterUrl = "https://vansu.vn"+ a.attr("href");
 //        	System.out.println(charaterUrl);
         	allUrl.add(charaterUrl);
+			CrawlerManager.setCountUrlBrowsed();
         }
         
 		Elements buttonsChangePage = table.select("tfoot div a");
@@ -69,9 +72,10 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		return allUrl;
 	}
 	public void getData(List<String> allUrl) {
-		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterVanSu.json")) {
+		try (Writer writer = new FileWriter("src\\main\\java\\json\\characterVanSu1.json")) {
 		    writer.write('[');
-		
+
+		int count = 0;
 		for(String url : allUrl) {
 			Character nv = new Character();
 			try {
@@ -115,7 +119,8 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 				nv.setAotherName(anotherName);
 				nv.setEra(era);
 				nv.setDescription(depcription);
-				
+
+				count++;
 			    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 			    gson.toJson(nv, writer);
 			    writer.write(",\n");
@@ -125,8 +130,9 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 				e.printStackTrace();
 			}
 		}
-		
 		    writer.write(']');
+			CrawlerManager.setEntityCrawled("Nhân vật - Văn sử:", count);
+
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -151,6 +157,7 @@ public class VanSuCharacterCrawler extends CharacterCrawler{
 		List<String> allUrl = test.getAllUrl(url);
 //		System.out.println(allUrl.size());
 		test.getData(allUrl);
+		CrawlerManager.setBaseWebList("Character", url);
 	}
 
 }

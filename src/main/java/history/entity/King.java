@@ -1,5 +1,6 @@
 package history.entity;
 
+import crawler.manager.CrawlerManager;
 import history.History;
 
 import java.io.IOException;
@@ -37,9 +38,11 @@ public class King extends History{
 	@Override
 	public List<King> loadDataJson() throws IOException {
 		 Gson gson = new Gson();
-	        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King.json"));
-	        List<King> dks = Arrays.asList(gson.fromJson(reader, King[].class)); 
-	        reader.close();
+		 Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/King.json"));
+		 List<King> dks = Arrays.asList(gson.fromJson(reader, King[].class));
+		 reader.close();
+
+		CrawlerManager.setEntityDisplay("King", dks.size());
 
 	        return dks;
 	}
@@ -135,7 +138,9 @@ public class King extends History{
 		if(thanMau!=null) this.thanMau = thanMau;
 		else this.thanMau = "Không rõ";
 	}
-	
+	public void setSinhMat() {
+		this.setTime("Sinh: " + this.sinh + "\n" + "Mất: " + this.mat);
+	}
 	@Override
 	public String hienthi() {
 		return "Tên: " + this.getName() + "\n"  + "Miếu hiệu: " + this.getMienHieu() + "\n" + "Thụy hiệu: " + this.getThuyHieu() + "\n" + 

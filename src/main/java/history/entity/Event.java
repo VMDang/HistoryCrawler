@@ -1,5 +1,6 @@
 package history.entity;
 
+import crawler.manager.CrawlerManager;
 import history.History;
 
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class Event extends History {
 		Gson gson = new Gson();
 		Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/event.json"));
 		List<Event> dks = Arrays.asList(gson.fromJson(reader, Event[].class));
+
+		CrawlerManager.setEntityDisplay("Event", dks.size());
 		return dks;
 	}
 	public static void main(String[] args) throws IOException {

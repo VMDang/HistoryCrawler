@@ -1,6 +1,7 @@
 package history.entity;
 
 import com.google.gson.Gson;
+import crawler.manager.CrawlerManager;
 import history.History;
 
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class Festival extends History {
         Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/festival_Wiki.json"));
         List<Festival> dks = Arrays.asList(gson.fromJson(reader, Festival[].class)); //dks is arraylist of festival
         reader.close();
+
+        CrawlerManager.setEntityDisplay("Festival", dks.size());
 
         return dks;
     }

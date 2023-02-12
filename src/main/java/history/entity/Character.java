@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
+import crawler.manager.CrawlerManager;
 import history.History;
 
 public class Character extends History {
@@ -39,12 +40,15 @@ public class Character extends History {
 
 	@Override
 	public List<Character> loadDataJson() throws IOException {
-		 	Gson gson = new Gson();
-	        Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/character.json"));
-	        List<Character> dks = Arrays.asList(gson.fromJson(reader, Character[].class)); 
-	        reader.close();
+		Gson gson = new Gson();
+		Reader reader = Files.newBufferedReader(Paths.get("src/main/java/json/character.json"));
+		List<Character> dks = Arrays.asList(gson.fromJson(reader, Character[].class));
+		reader.close();
 
-	        return dks;
+		CrawlerManager.setEntityDisplay("Character", dks.size());
+
+
+		return dks;
 	}
 
 	public Character (String name, String time, String description,String aotherName,String place,List<String> era) {
