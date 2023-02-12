@@ -110,7 +110,7 @@ public class Main {
         });
 
         JOptionPane optionPane = new NarrowOptionPane();
-        optionPane.setMessage("Danh sách URL chính: \n" + showEntityDisplay[0]);
+        optionPane.setMessage("Tổng số thực thể hiển thị : \n" + showEntityDisplay[0]);
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         JDialog dialog = optionPane.createDialog(null, "Tổng số dữ liệu hiển thị \n");
         dialog.setVisible(true);
