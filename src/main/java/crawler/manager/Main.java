@@ -106,11 +106,13 @@ public class Main {
                 showEntityDisplay[0] += "Nhân vật    : " + value + "\n";
             } else if (key.contains("King")) {
                 showEntityDisplay[0] += "Vua         : " + value + "\n";
+            }else if (key.contains("Event")) {
+                showEntityDisplay[0] += "Sự kiện         : " + value + "\n";
             }
         });
 
         JOptionPane optionPane = new NarrowOptionPane();
-        optionPane.setMessage("Danh sách URL chính: \n" + showEntityDisplay[0]);
+        optionPane.setMessage("Tổng số đối tượng đã thu thập:\n" + showEntityDisplay[0]);
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         JDialog dialog = optionPane.createDialog(null, "Tổng số dữ liệu hiển thị \n");
         dialog.setVisible(true);

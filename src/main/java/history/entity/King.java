@@ -138,7 +138,9 @@ public class King extends History{
 		if(thanMau!=null) this.thanMau = thanMau;
 		else this.thanMau = "Không rõ";
 	}
-	
+	public void setSinhMat() {
+		this.setTime("Sinh: " + this.sinh + "\n" + "Mất: " + this.mat);
+	}
 	@Override
 	public String hienthi() {
 		return "Tên: " + this.getName() + "\n"  + "Miếu hiệu: " + this.getMienHieu() + "\n" + "Thụy hiệu: " + this.getThuyHieu() + "\n" + 
