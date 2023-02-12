@@ -25,14 +25,13 @@ public class MainScreen extends JFrame {
 		setVisible(true);
 		JFrame frame = this;
 		Platform.runLater(new Runnable() {
-			
+
 			@Override
 			public void run() {
 				try {
-					FXMLLoader loader = new FXMLLoader(MainScreen.class.getResource("mainScreen.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("mainScreen.fxml"));
 					MainScreenController controller = new MainScreenController(store, frame);
 					loader.setController(controller);
-
 					Parent root = loader.load();
 					fxPanel.setScene(new Scene(root, 1024, 768));
 					fxPanel.setSize(1024, 768);
@@ -77,7 +76,6 @@ public class MainScreen extends JFrame {
 		}
 		new MainScreen(store);
 	}
-
 	public static void main(String[] args) throws IOException {
 		Store store = new Store();
 		Event event1 = new Event();
@@ -112,5 +110,4 @@ public class MainScreen extends JFrame {
 		}
 		new MainScreen(store);
 	}
-
 }

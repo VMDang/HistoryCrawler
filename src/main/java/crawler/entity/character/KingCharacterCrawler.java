@@ -191,7 +191,7 @@ public class KingCharacterCrawler extends CharacterCrawler{
 				  kingDetail.setTienNhiem(tienNhiem);
 				  kingDetail.setTrieuDai(trieuDai);
 				  kingDetail.setTriVi(triVi);
-
+				  kingDetail.setSinhMat();
 				  count++;
 				  Gson gson = new GsonBuilder().setPrettyPrinting().create();
 				  gson.toJson(kingDetail, file);
@@ -218,4 +218,5 @@ public class KingCharacterCrawler extends CharacterCrawler{
 		kingCrawler.getData(allUrls);
 		CrawlerManager.setBaseWebList("King", url);
 	}
+	
 }
