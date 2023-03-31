@@ -29,7 +29,8 @@ public class MainScreen extends JFrame {
 			@Override
 			public void run() {
 				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("mainScreen.fxml"));
+					FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("mainScreen.fxml"));
+					System.out.println(loader.toString());
 					MainScreenController controller = new MainScreenController(store, frame);
 					loader.setController(controller);
 					Parent root = loader.load();
